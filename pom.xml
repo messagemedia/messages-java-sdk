@@ -5,12 +5,29 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>MessageMediaMessages</groupId>
-  <artifactId>MessageMediaMessages</artifactId>
+  <groupId>com.messagemedia.sdk</groupId>
+  <artifactId>messages</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
+  <build>
+    <finalName>messagemedia-messages-sdk-1.0.0</finalName>
+  </build>
 
-  <name>MessageMediaMessages</name>
+  <name>MessageMedia Messages SDK</name>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>MessageMedia</name>
+    <url>https://developers.messagemedia.com/</url>
+  </organization>
 
   <repositories>
     <repository>
