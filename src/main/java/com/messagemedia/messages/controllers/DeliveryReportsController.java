@@ -201,7 +201,7 @@ public class DeliveryReportsController extends BaseController {
         Map<String, String> _headers = new HashMap<String, String>() {
             private static final long serialVersionUID = 5475139477176994136L;
             {
-                    put( "user-agent", "messagemedia-messages" );
+                    put( "user-agent", "messagemedia-messages-java-sdk-1.0.0" );
                     put( "accept", "application/json" );
             }
         };
@@ -336,7 +336,7 @@ public class DeliveryReportsController extends BaseController {
         Map<String, String> _headers = new HashMap<String, String>() {
             private static final long serialVersionUID = 4985369953259144658L;
             {
-                    put( "user-agent", "messagemedia-messages" );
+                    put( "user-agent", "messagemedia-messages-java-sdk-1.0.0" );
                     put( "accept", "application/json" );
                     put( "content-type", "application/json" );
             }
