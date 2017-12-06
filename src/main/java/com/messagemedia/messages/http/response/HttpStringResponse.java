@@ -7,7 +7,8 @@ package com.messagemedia.messages.http.response;
 import java.io.InputStream;
 import java.util.Map;
 
-public class HttpStringResponse extends HttpResponse {
+public class HttpStringResponse extends HttpResponse 
+{
     /**
      * Private store for properties
      */
@@ -16,7 +17,8 @@ public class HttpStringResponse extends HttpResponse {
     /**
      * String body of the http response
      */
-    public String getBody() {
+    public String getBody() 
+    {
         return body;
     }
 
@@ -26,7 +28,12 @@ public class HttpStringResponse extends HttpResponse {
      * @param _rawBody The raw data returned by the HTTP request
      * @return Http response initialized with the given code, headers and rawBody
      */
-    public HttpStringResponse(int _code, Map<String, String> _headers, InputStream _rawBody, String body) {
+    public HttpStringResponse(
+    		int _code, 
+    		Map<String, String> _headers, 
+    		InputStream _rawBody, 
+    		String body) 
+    {
         super(_code, _headers, _rawBody);
         this.body = body;
     }

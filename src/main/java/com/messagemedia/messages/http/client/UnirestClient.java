@@ -5,7 +5,6 @@
 package com.messagemedia.messages.http.client;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mashape.unirest.http.options.*;
 import com.mashape.unirest.http.Unirest;
 
 import com.messagemedia.messages.http.client.HttpContext;
@@ -16,7 +15,6 @@ import com.messagemedia.messages.http.response.HttpResponse;
 import com.messagemedia.messages.http.response.HttpStringResponse;
 import com.messagemedia.messages.exceptions.APIException;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.AbstractMap.SimpleEntry;

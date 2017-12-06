@@ -14,11 +14,11 @@ public interface HttpCallBack {
      * Callback called just before the HTTP request is sent 
      * @param request The HTTP request to be executed
      */
-    public void OnBeforeRequest(HttpRequest request);
+    public void onBeforeRequest(HttpRequest request);
     
     /**
      * Callback called just after the HTTP response is received
      * @param context Context for the HTTP call
      */
-    public void OnAfterResponse(HttpContext context);
+    public void onAfterResponse(HttpContext context);
 }

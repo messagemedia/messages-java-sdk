@@ -4,7 +4,6 @@
  */
 package com.messagemedia.messages.models;
 
-import java.util.*;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
