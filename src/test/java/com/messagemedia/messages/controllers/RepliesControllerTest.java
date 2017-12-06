@@ -212,7 +212,7 @@ public class RepliesControllerTest extends ControllerTestBase
         // Test whether the response is null
         assertNotNull("Result should exist", result);
         
-        assertEquals("Response should include replies", "{\"replies\":[]}", ((HttpStringResponse)httpResponse.getResponse()).getBody());
+        assertTrue("Response should include replies", ((HttpStringResponse)httpResponse.getResponse()).getBody().startsWith("{\"replies\":["));
         
         // Test response code
         assertEquals("Status should be OK (200)", 200, httpResponse.getResponse().getStatusCode());
