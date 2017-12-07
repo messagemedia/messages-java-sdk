@@ -7,12 +7,14 @@ package com.messagemedia.messages;
 import com.messagemedia.messages.controllers.*;
 import com.messagemedia.messages.http.client.HttpClient;
 
-public class MessageMediaMessagesClient {
+public class MessageMediaMessagesClient 
+{
     /**
      * Singleton access to Messages controller
      * @return	Returns the MessagesController instance 
      */
-    public MessagesController getMessages() {
+    public MessagesController getMessages() 
+    {
         return MessagesController.getInstance();
     }
 
@@ -20,7 +22,8 @@ public class MessageMediaMessagesClient {
      * Singleton access to DeliveryReports controller
      * @return	Returns the DeliveryReportsController instance 
      */
-    public DeliveryReportsController getDeliveryReports() {
+    public DeliveryReportsController getDeliveryReports() 
+    {
         return DeliveryReportsController.getInstance();
     }
 
@@ -28,7 +31,8 @@ public class MessageMediaMessagesClient {
      * Singleton access to Replies controller
      * @return	Returns the RepliesController instance 
      */
-    public RepliesController getReplies() {
+    public RepliesController getReplies() 
+    {
         return RepliesController.getInstance();
     }
 
@@ -36,7 +40,8 @@ public class MessageMediaMessagesClient {
      * Get the shared http client currently being used for API calls
      * @return The http client instance currently being used
      */
-    public HttpClient getSharedHttpClient() {
+    public HttpClient getSharedHttpClient() 
+    {
         return BaseController.getClientInstance();
     }
     
@@ -44,20 +49,23 @@ public class MessageMediaMessagesClient {
      * Set a shared http client to be used for API calls
      * @param httpClient The http client to use
      */
-    public void setSharedHttpClient(HttpClient httpClient) {
+    public void setSharedHttpClient(HttpClient httpClient) 
+    {
         BaseController.setClientInstance(httpClient);
     }
 
     /**
      * Default constructor 
      */     
-    public MessageMediaMessagesClient() {
+    public MessageMediaMessagesClient() 
+    {
     }
 
     /**
      * Client initialization constructor 
      */     
-    public MessageMediaMessagesClient(String basicAuthUserName, String basicAuthPassword) {
+    public MessageMediaMessagesClient(String basicAuthUserName, String basicAuthPassword) 
+    {
         this();
         Configuration.basicAuthUserName = basicAuthUserName;
         Configuration.basicAuthPassword = basicAuthPassword;

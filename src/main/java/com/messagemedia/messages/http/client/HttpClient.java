@@ -12,7 +12,8 @@ import java.util.Map;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
 
-public interface HttpClient {
+public interface HttpClient 
+{
 
      /**
      * Sets a timeout for HTTP requests

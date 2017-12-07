@@ -8,7 +8,8 @@ import com.messagemedia.messages.http.request.HttpMethod;
 
 import java.util.Map;
 
-public class HttpBodyRequest extends HttpRequest {
+public class HttpBodyRequest extends HttpRequest 
+{
     /**
      * Private store for properties
      */
@@ -17,7 +18,8 @@ public class HttpBodyRequest extends HttpRequest {
     /**
      * Body for the http request
      */
-    public String getBody() {
+    public String getBody() 
+    {
         return body;
     }
 
@@ -30,8 +32,12 @@ public class HttpBodyRequest extends HttpRequest {
      * @param _body     The object to be sent as body after serialization
      * @return Http request initialized with the given method, url, headers and request body
      */
-    public HttpBodyRequest(HttpMethod _method, String _queryUrl,
-                           Map<String, String> _headers, String _body) {
+    public HttpBodyRequest(
+    		HttpMethod _method, 
+    		String _queryUrl,
+    		Map<String, String> _headers, 
+    		String _body) 
+    {
         super(_method, _queryUrl, _headers, null);
         this.body = _body!=null ? _body : "";
     }
@@ -47,9 +53,14 @@ public class HttpBodyRequest extends HttpRequest {
      * @param _password Password for basic authentication
      * @return Http request initialized with the given method, url, headers and request body
      */
-    public HttpBodyRequest(HttpMethod _method, String _queryUrl,
-                           Map<String, String> _headers, String _body,
-                           String _username, String _password) {
+    public HttpBodyRequest(
+    		HttpMethod _method, 
+    		String _queryUrl,
+    		Map<String, String> _headers, 
+    		String _body,
+           String _username, 
+           String _password) 
+    {
         super(_method, _queryUrl, _headers, null, _username, _password);
         this.body = _body!=null ? _body : "";
     }

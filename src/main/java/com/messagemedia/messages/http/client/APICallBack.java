@@ -1,4 +1,5 @@
 /*
+
  * MessageMediaMessages
  *
  */
@@ -9,7 +10,8 @@ import com.messagemedia.messages.http.client.HttpContext;
 /**
  * Callback class for handling API calls with a templated response type T
  */
-public interface APICallBack<T> {
+public interface APICallBack<T> 
+{
     /**
      * On Completed callback for API calls
      * @param context   The context of the API request

@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.Timeout;
 
+import com.messagemedia.messages.Configuration;
 import com.messagemedia.messages.MessageMediaMessagesClient;
 import com.messagemedia.messages.testing.HttpCallBackCatcher;
 
@@ -42,6 +43,9 @@ public class ControllerTestBase {
     @Before
     public void setUp() throws Exception {
         httpResponse = new HttpCallBackCatcher(); 
+        
+		Configuration.basicAuthUserName = System.getenv("MessageMediaApiTestsKey");
+        Configuration.basicAuthPassword = System.getenv("MessageMediaApiTestsSecret");
     }
 
     /**

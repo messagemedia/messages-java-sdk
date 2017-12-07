@@ -5,7 +5,8 @@
 package com.messagemedia.messages;
 
 
-public class Configuration {
+public class Configuration 
+{
     //The base Uri for API calls
     public static String baseUri = "https://api.messagemedia.com";
 
@@ -17,4 +18,9 @@ public class Configuration {
     //TODO: Replace the basicAuthPassword with an appropriate value
     public static String basicAuthPassword = "TODO: Replace";
 
+    //The username to use with HMAC authentication
+    public static String hmacAuthUserName = "";
+
+    //The password to use with HMAC authentication
+    public static String hmacAuthPassword = "";
 }
