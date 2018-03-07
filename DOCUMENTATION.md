@@ -107,7 +107,7 @@ To use a proxy with the API, you need to insert the following line of code befor
 ```java
 Unirest.setProxy(new HttpHost(x, y));
 ```
-where x is the IP address used to identify the host and y is the port number for identifying a particular service running in the host. 
+*where x is the IP address used to identify the host and y is the port number for identifying a particular service running in the host.*
 
 
 # Class Reference
