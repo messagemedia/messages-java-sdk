@@ -11,7 +11,7 @@ public class Send_message {
         // Configuration parameters and credentials
         String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
         String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
-        boolean useHmacAuth = true; // Change to true if you are using HMAC keys
+        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
         MessagesController messages = client.getMessages();
