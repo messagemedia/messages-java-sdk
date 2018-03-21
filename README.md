@@ -3,6 +3,8 @@
 
 The MessageMedia Messages API provides a number of endpoints for building powerful two-way messaging applications.
 
+![Alt Text](https://media.giphy.com/media/l0Exov2QmxF5Xwjkc/giphy.gif)
+
 ## ⭐️ Install Manually
 Add the .jar file to your project
 
@@ -23,10 +25,11 @@ public class Main {
 
     public static void main(String[] args) throws Throwable {
         // Configuration parameters and credentials
-        String basicAuthUserName = "YOUR_API_KEY"; // The username to use with basic authentication
-        String basicAuthPassword = "YOUR_API_SECRET"; // The password to use with basic authentication
+        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
+        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
+        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(basicAuthUserName, basicAuthPassword);
+        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
         MessagesController messages = client.getMessages();
 
         String bodyValue = "{\"messages\":" +
@@ -58,10 +61,12 @@ public class Main {
 
     public static void main(String[] args) throws Throwable {
         // Configuration parameters and credentials
-        String basicAuthUserName = "YOUR_API_KEY"; // The username to use with basic authentication
-        String basicAuthPassword = "YOUR_API_SECRET"; // The password to use with basic authentication
+        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
+        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
+        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(basicAuthUserName, basicAuthPassword);
+        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
+        MessagesController messages = client.getMessages();
 
         MessagesController messages = client.getMessages();
 
@@ -84,10 +89,12 @@ public class Main {
 
     public static void main(String[] args) throws Throwable {
         // Configuration parameters and credentials
-        String basicAuthUserName = "YOUR_API_KEY"; // The username to use with basic authentication
-        String basicAuthPassword = "YOUR_API_SECRET"; // The password to use with basic authentication
+        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
+        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
+        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(basicAuthUserName, basicAuthPassword);
+        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
+        MessagesController messages = client.getMessages();
 
         RepliesController replies = client.getReplies();
 
@@ -109,10 +116,12 @@ public class Main {
 
     public static void main(String[] args) throws Throwable {
         // Configuration parameters and credentials
-        String basicAuthUserName = "YOUR_API_KEY"; // The username to use with basic authentication
-        String basicAuthPassword = "YOUR_API_SECRET"; // The password to use with basic authentication
+        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
+        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
+        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(basicAuthUserName, basicAuthPassword);
+        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
+        MessagesController messages = client.getMessages();
 
         DeliveryReportsController deliveryReports = client.getDeliveryReports();
 
@@ -124,7 +133,10 @@ public class Main {
 ```
 
 ## 📕 Documentation
-The Java SDK Documentation can be viewed [here](DOCUMENTATION.md)
+Check out the [full API documentation](DOCUMENTATION.md) for more detailed information.
 
 ## 😕 Got Stuck?
 Please contact developer support at developers@messagemedia.com or check out the developer portal at [developers.messagemedia.com](https://developers.messagemedia.com/)
+
+## 📃 License
+Apache License. See the [LICENSE](LICENSE) file.
