@@ -3,8 +3,6 @@
 
 The MessageMedia Messages API provides a number of endpoints for building powerful two-way messaging applications.
 
-![Alt Text](https://media.giphy.com/media/l0Exov2QmxF5Xwjkc/giphy.gif)
-
 ## ⭐️ Install Manually
 Add the .jar file to your project
 
