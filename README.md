@@ -4,7 +4,17 @@
 The MessageMedia Messages API provides a number of endpoints for building powerful two-way messaging applications.
 
 ## ⭐️ Install Manually
-Add the .jar file to your project
+At present the jars are available from a public maven repository.
+
+Use the following dependency in your project to grab via Maven:
+```
+<dependency>
+    <groupId>com.messagemedia.sdk</groupId>
+    <artifactId>messages</artifactId>
+    <version>1.0.0</version>
+</dependency>
+
+```
 
 ## 🎬 Get Started
 It's easy to get started. Simply enter the API Key and secret you obtained from the [MessageMedia Developers Portal](https://developers.messagemedia.com) into the code snippet below and a mobile number you wish to send to.
