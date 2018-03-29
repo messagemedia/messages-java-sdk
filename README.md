@@ -1,5 +1,6 @@
 # MessageMedia Messages Java SDK
 [![Travis Build Status](https://api.travis-ci.org/messagemedia/messages-java-sdk.svg?branch=master)](https://travis-ci.org/messagemedia/messages-java-sdk)
+[![maven](https://img.shields.io/badge/maven-v1.0.0-blue.svg)](https://mvnrepository.com/artifact/com.messagemedia.sdk/messages)
 
 The MessageMedia Messages API provides a number of endpoints for building powerful two-way messaging applications.
 
