@@ -3,7 +3,7 @@
 
 The MessageMedia Messages API provides a number of endpoints for building powerful two-way messaging applications.
 
-## ⭐️ Install Manually
+## ⭐️ Installing via Maven
 At present the jars are available from a public maven repository.
 
 Use the following dependency in your project to grab via Maven:
