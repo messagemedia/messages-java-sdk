@@ -59,6 +59,47 @@ public class Main {
 }
 ```
 
+### 🖼 Send an MMS
+* Destination numbers (`destination_number`) should be in the [E.164](http://en.wikipedia.org/wiki/E.164) format. For example, `+61491570156`.
+```java
+package com.company;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.messagemedia.messages.MessageMediaMessagesClient;
+import com.messagemedia.messages.controllers.MessagesController;
+import com.messagemedia.messages.models.SendMessagesRequest;
+import com.fasterxml.jackson.core.type.TypeReference;
+
+public class Main {
+
+    public static void main(String[] args) throws Throwable {
+        // Configuration parameters and credentials
+        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
+        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
+        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
+
+        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
+        MessagesController messages = client.getMessages();
+
+        String bodyValue = "{\"messages\":" +
+                "[{\"content\":\"My first message\", " +
+                "\"destination_number\":\"YOUR_MOBILE_NUMBER\"" +
+                "\"format\":\"MMS\"" +
+                "\"media\":\"https://upload.wikimedia.org/wikipedia/commons/6/6a/L80385-flash-superhero-logo-1544.png\"" +
+                "}]}";
+
+        SendMessagesRequest request = new SendMessagesRequest();
+
+        ObjectMapper mapper = new ObjectMapper();
+        SendMessagesRequest body = mapper.readValue(bodyValue,new TypeReference<SendMessagesRequest> (){});
+
+
+        messages.createSendMessages(body);
+
+    }
+
+}
+```
+
 ### 🕓 Get Status of a Message
 You can get a messsage ID from a sent message by looking at the `message_id` from the response of the above example.
 ```java
