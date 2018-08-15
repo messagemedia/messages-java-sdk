@@ -172,8 +172,6 @@ public class Main {
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
         MessagesController messages = client.getMessages();
 
-        MessagesController messages = client.getMessages();
-
         String messageId = "YOUR_MESSAGE_ID";
         String result = messages.getMessageStatus(messageId).parseAsString();
         System.out.print(result);
@@ -198,8 +196,6 @@ public class Main {
         boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        MessagesController messages = client.getMessages();
-
         RepliesController replies = client.getReplies();
 
         String result = replies.getCheckReplies().getReplies().toString();
@@ -225,8 +221,6 @@ public class Main {
         boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        MessagesController messages = client.getMessages();
-
         DeliveryReportsController deliveryReports = client.getDeliveryReports();
 
         String result = deliveryReports.getCheckDeliveryReports().getDeliveryReports().toString();
