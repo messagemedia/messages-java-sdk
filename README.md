@@ -64,9 +64,9 @@ At present the jars are available from a public maven repository.
 Use the following dependency in your project to grab via Maven:
 ```
 <dependency>
-    <groupId>com.messagemedia.sdk</groupId>
-    <artifactId>messages</artifactId>
-    <version>1.0.0</version>
+  <groupId>com.messagemedia.sdk</groupId>
+  <artifactId>messages</artifactId>
+  <version>1.2.0</version>
 </dependency>
 
 ```
