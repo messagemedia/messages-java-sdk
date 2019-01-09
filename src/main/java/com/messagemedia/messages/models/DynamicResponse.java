@@ -1,6 +1,7 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.models;
 
@@ -9,6 +10,8 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.messagemedia.messages.APIHelper;
 import com.messagemedia.messages.http.response.HttpResponse;
 import com.messagemedia.messages.http.response.HttpStringResponse;
@@ -16,7 +19,7 @@ import com.messagemedia.messages.http.response.HttpStringResponse;
 /**
  * Represents dynamic response returned by an API call.
  * 
- * Allows user to lazily parse the response as a primitive
+ * Allows user to lazily parse the response as a primtive
  * or a more complex type using parse(). 
  */
 public class DynamicResponse {

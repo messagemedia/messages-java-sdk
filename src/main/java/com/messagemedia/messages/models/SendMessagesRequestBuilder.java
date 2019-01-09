@@ -1,6 +1,7 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.models;
 
@@ -17,7 +18,7 @@ public class SendMessagesRequestBuilder {
         sendMessagesRequest = new SendMessagesRequest();
     }
 
-    public SendMessagesRequestBuilder messages(List<Object> messages) {
+    public SendMessagesRequestBuilder messages(List<Message> messages) {
         sendMessagesRequest.setMessages(messages);
         return this;
     }

@@ -1,12 +1,12 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages;
 
 
-public class Configuration 
-{
+public class Configuration {
     //The base Uri for API calls
     public static String baseUri = "https://api.messagemedia.com";
 
@@ -23,4 +23,5 @@ public class Configuration
 
     //The password to use with HMAC authentication
     public static String hmacAuthPassword = "";
+
 }
