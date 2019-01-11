@@ -37,7 +37,8 @@ local.properties
 # PDT-specific (PHP Development Tools)
 .buildpath
 
-
+# sbteclipse plugin
+.target
 
 # Tern plugin
 .tern-project
