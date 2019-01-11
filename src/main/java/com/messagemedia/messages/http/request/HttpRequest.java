@@ -1,6 +1,7 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.http.request;
 
@@ -10,8 +11,7 @@ import java.util.Map;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
 
-public class HttpRequest 
-{
+public class HttpRequest {
     /**
      * Private store for properties
      */
@@ -25,48 +25,42 @@ public class HttpRequest
     /**
      * Headers for the http request
      */
-    public HttpMethod getHttpMethod() 
-    {
+    public HttpMethod getHttpMethod() {
         return httpMethod;
     }
 
     /**
      * Headers for the http request
      */
-    public Map<String, String> getHeaders() 
-    {
+    public Map<String, String> getHeaders() {
         return headers;
     }
 
     /**
      * Query url for the http request
      */
-    public String getQueryUrl() 
-    {
+    public String getQueryUrl() {
         return queryUrl;
     }
 
     /**
      * Parameters for the http request
      */
-    public List<SimpleEntry<String, Object>> getParameters() 
-    {
+    public List<SimpleEntry<String, Object>> getParameters() {
         return parameters;
     }
 
     /**
      * Username for basic authentication
      */
-    public String getUsername() 
-    {
+    public String getUsername() {
         return username;
     }
 
     /**
      * Password for basic authentication
      */
-    public String getPassword() 
-    {
+    public String getPassword() {
         return password;
     }
 
@@ -79,12 +73,8 @@ public class HttpRequest
      * @param _parameters The form data values in a key-value map
      * @return Http request initialized with the given method, url and headers
      */
-    public HttpRequest(
-    		HttpMethod _method, 
-    		String _queryUrl,
-            Map<String, String> _headers, 
-            List<SimpleEntry<String, Object>> _parameters) 
-    {
+    public HttpRequest(HttpMethod _method, String _queryUrl,
+                       Map<String, String> _headers, List<SimpleEntry<String, Object>> _parameters) {
         this.httpMethod = _method;
         this.queryUrl = _queryUrl;
         this.headers = _headers;
@@ -102,14 +92,9 @@ public class HttpRequest
      * @param _password   Password for basic authentication
      * @return Http request initialized with the given method, url and headers
      */
-    public HttpRequest(
-    		HttpMethod _method, 
-			String _queryUrl,
-            Map<String, String> _headers, 
-            List<SimpleEntry<String, Object>> _parameters,
-            String _username, 
-            String _password) 
-    {
+    public HttpRequest(HttpMethod _method, String _queryUrl,
+                       Map<String, String> _headers, List<SimpleEntry<String, Object>> _parameters,
+                       String _username, String _password) {
         this(_method, _queryUrl, _headers, _parameters);
         this.username = _username;
         this.password = _password;

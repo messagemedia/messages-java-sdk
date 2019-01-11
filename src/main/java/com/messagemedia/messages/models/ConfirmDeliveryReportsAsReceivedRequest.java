@@ -1,6 +1,7 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.models;
 
@@ -10,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class ConfirmDeliveryReportsAsReceivedRequest 
         implements java.io.Serializable {
-    private static final long serialVersionUID = 5236831992404496895L;
+    private static final long serialVersionUID = 26298810435532367L;
     private List<String> deliveryReportIds;
     /** GETTER
      * TODO: Write general description for this method
@@ -29,4 +30,3 @@ public class ConfirmDeliveryReportsAsReceivedRequest
     }
  
 }
- 

@@ -1,6 +1,7 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.controllers.syncwrapper;
 
@@ -10,8 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Base class to help convert an asynchronous callback to synchronous one
  */
-public class SynchronousBase 
-{
+public class SynchronousBase {
     
     private CountDownLatch lock;
     
@@ -19,16 +19,14 @@ public class SynchronousBase
      * Initiate class with a task count
      * @param count Number of tasks we will wait on
      */
-    public SynchronousBase(int count) 
-    {
+    public SynchronousBase(int count) {
         this.lock = new CountDownLatch(count);
     }
     
     /**
      * Initiate class with a count down of one only
      */
-    public SynchronousBase() 
-    {
+    public SynchronousBase() {
         this(1);
     }
 
@@ -44,10 +42,7 @@ public class SynchronousBase
      * Wait until all tasks are marked as done
      * @throws InterruptedException
      */
-    public void await() 
-	throws 
-			InterruptedException 
-    {
+    public void await() throws InterruptedException {
         lock.await();
     }
     
@@ -58,11 +53,10 @@ public class SynchronousBase
      * @return
      * @throws InterruptedException
      */
-    public boolean await(long timeout, TimeUnit unit) 
-	throws 
-			InterruptedException 
-    {
+    public boolean await(long timeout, TimeUnit unit) throws InterruptedException {
         boolean t = lock.await(timeout, unit);
         return t;
     }
+    
 }
+

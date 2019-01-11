@@ -1,6 +1,7 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.models;
 
@@ -17,7 +18,10 @@ public class CheckRepliesResponseBuilder {
         checkRepliesResponse = new CheckRepliesResponse();
     }
 
-    public CheckRepliesResponseBuilder replies(List<Object> replies) {
+    /**
+     * The oldest 100 unconfirmed replies
+     */
+    public CheckRepliesResponseBuilder replies(List<Reply> replies) {
         checkRepliesResponse.setReplies(replies);
         return this;
     }

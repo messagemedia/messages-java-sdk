@@ -1,6 +1,7 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.http.client;
 
@@ -14,11 +15,11 @@ public interface HttpCallBack {
      * Callback called just before the HTTP request is sent 
      * @param request The HTTP request to be executed
      */
-    public void onBeforeRequest(HttpRequest request);
+    public void OnBeforeRequest(HttpRequest request);
     
     /**
      * Callback called just after the HTTP response is received
      * @param context Context for the HTTP call
      */
-    public void onAfterResponse(HttpContext context);
+    public void OnAfterResponse(HttpContext context);
 }

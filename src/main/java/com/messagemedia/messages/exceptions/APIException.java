@@ -1,10 +1,12 @@
 /*
  * MessageMediaMessages
  *
+ * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.exceptions;
 
 import java.io.IOException;
+import java.io.InputStream;
 import com.messagemedia.messages.APIHelper;
 import com.messagemedia.messages.http.client.HttpContext;
 import com.messagemedia.messages.http.response.HttpStringResponse;
@@ -12,6 +14,9 @@ import com.messagemedia.messages.http.response.HttpStringResponse;
 public class APIException extends Exception {
     //UID for serialization
     private static final long serialVersionUID = 6424174253911720338L;
+
+    //private fields
+    private int responseCode;
 
     //private fields
     private HttpContext httpContext;
