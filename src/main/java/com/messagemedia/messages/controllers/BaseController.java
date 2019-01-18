@@ -1,7 +1,6 @@
 /*
  * MessageMediaMessages
  *
- * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.controllers;
 
@@ -26,24 +25,25 @@ import com.messagemedia.messages.exceptions.*;
 import com.messagemedia.messages.http.client.HttpClient;
 import com.messagemedia.messages.http.client.HttpContext;
 import com.messagemedia.messages.http.client.HttpCallBack;
-import com.messagemedia.messages.http.client.OkClient;
+import com.messagemedia.messages.http.client.UnirestClient;
 import com.messagemedia.messages.http.request.HttpRequest;
 import com.messagemedia.messages.http.response.HttpResponse;
 import com.messagemedia.messages.http.response.HttpStringResponse;
 
-public abstract class BaseController {
-	
+
+public abstract class BaseController 
+{
 	/**
 	 * Public constant for our SDK version to send to the API.
 	 */
-	public static final String MESSAGE_MEDIA_JAVA_SDK_VERSION = "messagemedia-messages-java-sdk-1.2.0";
+	public static final String MESSAGE_MEDIA_JAVA_SDK_VERSION = "messagemedia-messages-java-sdk-1.1.0";
 	private static final String HMAC_SHA1_ALGORITHM = "HmacSHA1";
 
     /**
      * Private variable to keep shared reference of client instance
      */
     private static HttpClient clientInstance = null;
-    private static final Object syncObject = new Object();
+    private static Object syncObject = new Object();
 
     /**
      * Protected variable to keep reference of httpCallBack instance if user provides any
@@ -54,7 +54,8 @@ public abstract class BaseController {
      * Get httpCallBack associated with this controller
      * @return HttpCallBack
      */
-    public HttpCallBack getHttpCallBack() {
+    public HttpCallBack getHttpCallBack() 
+    {
         return httpCallBack;
     }
     
@@ -62,7 +63,8 @@ public abstract class BaseController {
      * Set the httpCallBack for this controller
      * @param httpCallBack
      */
-    public void setHttpCallBack(HttpCallBack httpCallBack) {
+    public void setHttpCallBack(HttpCallBack httpCallBack) 
+    {
         this.httpCallBack = httpCallBack;
     }
 
@@ -70,14 +72,16 @@ public abstract class BaseController {
      * Shared instance of the Http client
      * @return The shared instance of the http client 
      */
-    public static HttpClient getClientInstance() {
-        if (null == clientInstance) {
-            synchronized (syncObject) {
-                if (null == clientInstance) {
-                    clientInstance = OkClient.getSharedInstance();
-                }
-            }
+    public static HttpClient getClientInstance() 
+    {
+        synchronized (syncObject) 
+        {
+            if (null == clientInstance) 
+            {
+                clientInstance = UnirestClient.getSharedInstance();
+        	}
         }
+        
         return clientInstance;
     }
 
@@ -85,17 +89,17 @@ public abstract class BaseController {
      * Shared instance of the Http client
      * @param    client    The shared instance of the http client 
      */
-    public static void setClientInstance(HttpClient client) {
-        if (null != client) {
-            synchronized (syncObject) {
-                if (null != client) {
-                    clientInstance = client;
-                }
+    public static void setClientInstance(HttpClient client) 
+    {
+        synchronized (syncObject) 
+        {
+            if (null != client) 
+            {
+                clientInstance = client;
             }
         }
     }
 
-    
     /**
      * Creates a request and applies the authentication to it.
      * 
@@ -174,26 +178,22 @@ public abstract class BaseController {
     	headers.put("Account", accountHeaderValue);
     }
     
-    
     /**
      * Validates the response against HTTP errors defined at the API level
      * @param   response    The response recieved
      * @param   context     Context of the request and the recieved response 
      */
-    protected void validateResponse(HttpResponse response, HttpContext context) 
-         throws APIException {
-    	//get response status code to validate
-    	int responseCode = response.getStatusCode();
-    	if (responseCode == 400)
-    		throw new APIException("Request was invalid", context);
-
-    	if (responseCode == 404)
-    		throw new APIException("Message not found", context);
-
-    	if ((responseCode < 200) || (responseCode > 208)) //[200,208] = HTTP OK
-    		throw new APIException("HTTP Response Not OK", context);
+    protected void validateResponse(
+    		HttpResponse response, 
+    		HttpContext context
+	) throws APIException 
+    {
+        //get response status code to validate
+        int responseCode = response.getStatusCode();
+        String responseMessage = (response instanceof HttpStringResponse ? ((HttpStringResponse)response).getBody() : ""); 
+        if ((responseCode < 200) || (responseCode > 208)) //[200,208] = HTTP OK
+            throw new APIException("HTTP Response Not OK. " + responseMessage, context);
     }
-    
     
     String getRFC7231DateTime() 
     {
