@@ -1,7 +1,6 @@
 /*
  * MessageMediaMessages
  *
- * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.models;
 
@@ -11,22 +10,23 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class CheckRepliesResponse 
         implements java.io.Serializable {
-    private static final long serialVersionUID = -7772933677948924L;
-    private List<Reply> replies;
+    private static final long serialVersionUID = 5152723690941598473L;
+    private List<Object> replies;
     /** GETTER
-     * The oldest 100 unconfirmed replies
+     * TODO: Write general description for this method
      */
     @JsonGetter("replies")
-    public List<Reply> getReplies ( ) { 
+    public List<Object> getReplies ( ) { 
         return this.replies;
     }
     
     /** SETTER
-     * The oldest 100 unconfirmed replies
+     * TODO: Write general description for this method
      */
     @JsonSetter("replies")
-    public void setReplies (List<Reply> value) { 
+    public void setReplies (List<Object> value) { 
         this.replies = value;
     }
  
 }
+ 

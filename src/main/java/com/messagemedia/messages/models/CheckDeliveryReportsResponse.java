@@ -1,7 +1,6 @@
 /*
  * MessageMediaMessages
  *
- * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.models;
 
@@ -11,22 +10,23 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class CheckDeliveryReportsResponse 
         implements java.io.Serializable {
-    private static final long serialVersionUID = -96012171860688264L;
-    private List<DeliveryReport> deliveryReports;
+    private static final long serialVersionUID = 5407550748654389690L;
+    private List<Object> deliveryReports;
     /** GETTER
-     * The oldest 100 unconfirmed delivery reports
+     * TODO: Write general description for this method
      */
     @JsonGetter("delivery_reports")
-    public List<DeliveryReport> getDeliveryReports ( ) { 
+    public List<Object> getDeliveryReports ( ) { 
         return this.deliveryReports;
     }
     
     /** SETTER
-     * The oldest 100 unconfirmed delivery reports
+     * TODO: Write general description for this method
      */
     @JsonSetter("delivery_reports")
-    public void setDeliveryReports (List<DeliveryReport> value) { 
+    public void setDeliveryReports (List<Object> value) { 
         this.deliveryReports = value;
     }
  
 }
+ 

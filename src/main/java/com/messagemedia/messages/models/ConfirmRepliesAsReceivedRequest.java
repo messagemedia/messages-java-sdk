@@ -1,7 +1,6 @@
 /*
  * MessageMediaMessages
  *
- * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.models;
 
@@ -11,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class ConfirmRepliesAsReceivedRequest 
         implements java.io.Serializable {
-    private static final long serialVersionUID = 89430737967238397L;
+    private static final long serialVersionUID = 5531919675175769957L;
     private List<String> replyIds;
     /** GETTER
      * TODO: Write general description for this method
@@ -30,3 +29,4 @@ public class ConfirmRepliesAsReceivedRequest
     }
  
 }
+ 

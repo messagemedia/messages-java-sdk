@@ -1,7 +1,6 @@
 /*
  * MessageMediaMessages
  *
- * This file was automatically generated for MessageMedia by APIMATIC v2.0 ( https://apimatic.io ).
  */
 package com.messagemedia.messages.models;
 
@@ -11,13 +10,13 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class SendMessagesRequest 
         implements java.io.Serializable {
-    private static final long serialVersionUID = 5119050306973624L;
-    private List<Message> messages;
+    private static final long serialVersionUID = 5575041882781385339L;
+    private List<Object> messages;
     /** GETTER
      * TODO: Write general description for this method
      */
     @JsonGetter("messages")
-    public List<Message> getMessages ( ) { 
+    public List<Object> getMessages ( ) { 
         return this.messages;
     }
     
@@ -25,8 +24,9 @@ public class SendMessagesRequest
      * TODO: Write general description for this method
      */
     @JsonSetter("messages")
-    public void setMessages (List<Message> value) { 
+    public void setMessages (List<Object> value) { 
         this.messages = value;
     }
  
 }
+ 
