@@ -20,17 +20,12 @@ import com.messagemedia.messages.exceptions.APIException;
 
 
 public class OkClient implements HttpClient {
-    /**
-     * Private variables to implement singleton pattern
-     */
+ 
     private static final Object synRoot = new Object();
     private static HttpClient sharedInstance = null;
     private static okhttp3.OkHttpClient client = new okhttp3.OkHttpClient();
 
-    /**
-     * Singleton access to the shared instance
-     * @return A shared instance of UnirestClient
-     */
+ 
     public static HttpClient getSharedInstance() {
         if (sharedInstance == null) {
             synchronized(synRoot) {
@@ -42,20 +37,13 @@ public class OkClient implements HttpClient {
         return sharedInstance;
     }
 
-    /**
-    * Sets a timeout for HTTP requests
-    * @param   timeout    The timeout in seconds
-    */
+
     public void setTimeout(long timeout) {
         client = client.newBuilder().connectTimeout(timeout, TimeUnit.MILLISECONDS)
             .writeTimeout(timeout, TimeUnit.MILLISECONDS).readTimeout(timeout, TimeUnit.MILLISECONDS).build();
     }
 
-    /**
-     * Execute a given HttpRequest to get string response back
-     * @param   request     The given HttpRequest to execute
-     * @param   callBack    Async callback for events
-     */
+ 
     public void executeAsStringAsync(final HttpRequest httpRequest, final APICallBack<HttpResponse> callBack) {
         okhttp3.Request okHttpRequest = convertRequest(httpRequest);
         client.newCall(okHttpRequest).enqueue(new okhttp3.Callback() {
@@ -71,11 +59,6 @@ public class OkClient implements HttpClient {
         });
     }
 
-    /**
-     * Execute a given HttpRequest to get binary response back
-     * @param   request     The given HttpRequest to execute
-     * @param   callBack    Async callback for events
-     */
     public void executeAsBinaryAsync(final HttpRequest httpRequest, final APICallBack<HttpResponse> callBack) {
         okhttp3.Request okHttpRequest = convertRequest(httpRequest);
         client.newCall(okHttpRequest).enqueue(new okhttp3.Callback() {
@@ -90,10 +73,7 @@ public class OkClient implements HttpClient {
         });
     }
 
-    /**
-     * Execute a given HttpRequest to get string response back
-     * @param   request     The given HttpRequest to execute     
-     */
+ 
     public HttpResponse executeAsString(HttpRequest httpRequest) throws APIException {
         okhttp3.Request okHttpRequest = convertRequest(httpRequest);
         try {
@@ -104,10 +84,7 @@ public class OkClient implements HttpClient {
         }
     }
 
-    /**
-     * Execute a given HttpRequest to get binary response back
-     * @param   request     The given HttpRequest to execute     
-     */
+
     public HttpResponse executeAsBinary(HttpRequest httpRequest) throws APIException {
         okhttp3.Request okHttpRequest = convertRequest(httpRequest);
         try {
@@ -118,13 +95,7 @@ public class OkClient implements HttpClient {
         }
     }
 
-    /**
-     * Publishes success or failure result as HttpResponse from a HttpRequest
-     * @param   okHttpResponse  The okhttp response to publish
-     * @param   httpRequest     The internal http request
-     * @param   completionBlock The success and failure code block reference to invoke the delegate
-     * @param   error           The reported errors for getting the http response
-     */
+
     protected static void publishResponse(okhttp3.Response okHttpResponse, HttpRequest httpRequest,
             APICallBack<HttpResponse> completionBlock, Throwable error, boolean binaryResponse) {
         try {
@@ -144,12 +115,7 @@ public class OkClient implements HttpClient {
         }
     }
 
-    /**
-     * Converts a given OkHttp response into our internal http response model
-     * @param   response    The given OkHttp response
-     * @return              The converted http response
-     * @throws              IOException
-     */
+
     public static HttpResponse convertResponse(okhttp3.Response response, boolean binaryResponse) throws IOException {
         HttpResponse httpResponse = null;
 
@@ -181,11 +147,7 @@ public class OkClient implements HttpClient {
         return httpResponse;
     }
 
-    /**
-     * Converts a given internal http request into an okhttp request model
-     * @param   request     The given http request in internal format
-     * @return              The converted okhttp request
-     */
+  
     private okhttp3.Request convertRequest(HttpRequest httpRequest) {
         String url = httpRequest.getQueryUrl();
 
@@ -259,159 +221,117 @@ public class OkClient implements HttpClient {
         return okHttpRequest;
     }
 
-    /**
-     * Create a simple HTTP GET request with basic authentication
-     */
+   
     public HttpRequest get(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
         return new HttpRequest(HttpMethod.GET, _queryUrl, _headers, _parameters, _username, _password);
     }
 
-    /**
-     * Create a simple HTTP GET request
-     */
+ 
     public HttpRequest get(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
         return new HttpRequest(HttpMethod.GET, _queryUrl, _headers, _parameters);
     }
 
-    /**
-     * Create a simple HTTP HEAD request with basic authentication
-     */
+  
     public HttpRequest head(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
         return new HttpRequest(HttpMethod.HEAD, _queryUrl, _headers, _parameters, _username, _password);
     }
 
-    /**
-     * Create a simple HTTP HEAD request
-     */
+ 
     public HttpRequest head(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
         return new HttpRequest(HttpMethod.HEAD, _queryUrl, _headers, _parameters);
     }
 
-    /**
-     * Create an HTTP POST request with parameters
-     */
+  
     public HttpRequest post(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
         return new HttpRequest(HttpMethod.POST, _queryUrl, _headers, _parameters);
     }
 
-    /**
-     * Create an HTTP POST request with parameters and with basic authentication
-     */
+ 
     public HttpRequest post(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
         return new HttpRequest(HttpMethod.POST, _queryUrl, _headers, _parameters, _username, _password);
     }
 
-    /**
-     * Create an HTTP POST request with body
-     */
+ 
     public HttpBodyRequest postBody(String _queryUrl, Map<String, String> _headers, String _body) {
         return new HttpBodyRequest(HttpMethod.POST, _queryUrl, _headers, _body);
     }
 
-    /**
-     * Create an HTTP POST request with body and with basic authentication
-     */
+
     public HttpBodyRequest postBody(String _queryUrl, Map<String, String> _headers, String _body, String _username,
             String _password) {
         return new HttpBodyRequest(HttpMethod.POST, _queryUrl, _headers, _body, _username, _password);
     }
 
-    /**
-     * Create an HTTP PUT request with parameters
-     */
+
     public HttpRequest put(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
         return new HttpRequest(HttpMethod.PUT, _queryUrl, _headers, _parameters);
     }
 
-    /**
-     * Create an HTTP PUT request with parameters and with basic authentication
-     */
+   
     public HttpRequest put(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
         return new HttpRequest(HttpMethod.PUT, _queryUrl, _headers, _parameters, _username, _password);
     }
 
-    /**
-     * Create an HTTP PUT request with body
-     */
+  
     public HttpBodyRequest putBody(String _queryUrl, Map<String, String> _headers, String _body) {
         return new HttpBodyRequest(HttpMethod.PUT, _queryUrl, _headers, _body);
     }
 
-    /**
-     * Create an HTTP PUT request with body and with basic authentication
-     */
+
     public HttpBodyRequest putBody(String _queryUrl, Map<String, String> _headers, String _body, String _username,
             String _password) {
         return new HttpBodyRequest(HttpMethod.PUT, _queryUrl, _headers, _body, _username, _password);
     }
 
-    /**
-     * Create an HTTP PATCH request with parameters
-     */
+ 
     public HttpRequest patch(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
         return new HttpRequest(HttpMethod.PATCH, _queryUrl, _headers, _parameters);
     }
 
-    /**
-     * Create an HTTP PATCH request with parameters and with basic
-     * authentication
-     */
+  
     public HttpRequest patch(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
         return new HttpRequest(HttpMethod.PATCH, _queryUrl, _headers, _parameters, _username, _password);
     }
 
-    /**
-     * Create an HTTP PATCH request with body
-     */
+   
     public HttpBodyRequest patchBody(String _queryUrl, Map<String, String> _headers, String _body) {
         return new HttpBodyRequest(HttpMethod.PATCH, _queryUrl, _headers, _body);
     }
 
-    /**
-     * Create an HTTP PATCH request with body and with basic authentication
-     */
+ 
     public HttpBodyRequest patchBody(String _queryUrl, Map<String, String> _headers, String _body, String _username,
             String _password) {
         return new HttpBodyRequest(HttpMethod.PATCH, _queryUrl, _headers, _body, _username, _password);
     }
 
-    /**
-     * Create an HTTP DELETE request with parameters
-     */
+  
     public HttpRequest delete(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
         return new HttpRequest(HttpMethod.DELETE, _queryUrl, _headers, _parameters);
     }
 
-    /**
-     * Create an HTTP DELETE request with parameters and with basic
-     * authentication
-     */
+
     public HttpRequest delete(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
         return new HttpRequest(HttpMethod.DELETE, _queryUrl, _headers, _parameters, _username, _password);
     }
 
-    /**
-     * Create an HTTP DELETE request with body
-     */
+ 
     public HttpBodyRequest deleteBody(String _queryUrl, Map<String, String> _headers, String _body) {
         return new HttpBodyRequest(HttpMethod.DELETE, _queryUrl, _headers, _body);
     }
 
-    /**
-     * Create an HTTP DELETE request with body and with basic authentication
-     */
+  
     public HttpBodyRequest deleteBody(String _queryUrl, Map<String, String> _headers, String _body, String _username,
             String _password) {
         return new HttpBodyRequest(HttpMethod.DELETE, _queryUrl, _headers, _body, _username, _password);

@@ -66,7 +66,7 @@ Use the following dependency in your project to grab via Maven:
 <dependency>
   <groupId>com.messagemedia.sdk</groupId>
   <artifactId>messages</artifactId>
-  <version>1.3.0</version>
+  <version>2.0.0</version>
 </dependency>
 
 ```
@@ -77,48 +77,41 @@ It's easy to get started. Simply enter the API Key and secret you obtained from 
 ### Send an SMS
 Destination numbers (`destination_number`) should be in the [E.164](http://en.wikipedia.org/wiki/E.164) format. For example, `+61491570156`.
 ```java
-import java.io.IOException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.messagemedia.messages.MessageMediaMessagesClient;
 import com.messagemedia.messages.controllers.MessagesController;
 import com.messagemedia.messages.http.client.APICallBack;
 import com.messagemedia.messages.http.client.HttpContext;
+import com.messagemedia.messages.models.Message;
 import com.messagemedia.messages.models.SendMessagesRequest;
 import com.messagemedia.messages.models.SendMessagesResponse;
 
-/**
- * Hello world!
- *
- */
 public class App
 {
     public static void main( String[] args )
     {
 
      // Configuration parameters and credentials
-        String authUserName = "API KEY"; // The username to use with basic/HMAC authentication
-        String authPassword = "API SECRET"; // The password to use with basic/HMAC authentication
+        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
+        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
         boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
         MessagesController messages = client.getMessages();
 
-        String bodyValue = "{\"messages\":" +
-                "[{\"content\":\"My first message\", " +
-                "\"destination_number\":\"+614NUMBER\"" +
-                "}]}";
+        Message message = new Message();
+        message.setContent("My message");
+        message.setDestinationNumber("+61466412529");
 
-        SendMessagesRequest request = new SendMessagesRequest();
+        List<Message> messagesList = new ArrayList<Message>();
+        messagesList.add(message);
 
-        ObjectMapper mapper = new ObjectMapper();
-        SendMessagesRequest body;
-		try {
-			body = mapper.readValue(bodyValue,new TypeReference<SendMessagesRequest> (){});
+        SendMessagesRequest body = new SendMessagesRequest();
+        body.setMessages(messagesList);
 
-			APICallBack<SendMessagesResponse> callBack =  new APICallBack<SendMessagesResponse>() {
+        messages.sendMessagesAsync(body, new APICallBack<SendMessagesResponse>() {
 		        public void onSuccess(HttpContext context, SendMessagesResponse response) {
 		            // TODO success callback handler
 		        	System.out.println("success");
@@ -127,45 +120,33 @@ public class App
 		            // TODO failure callback handler
 		        	System.out.println("failure");
 		        }
-			};
-
-
-			messages.createSendMessagesAsync(null, body, callBack);
-
-		} catch (JsonParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (JsonMappingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
+			});
     }
 }
-
 ```
 
 ### Send an MMS
 * Destination numbers (`destination_number`) should be in the [E.164](http://en.wikipedia.org/wiki/E.164) format. For example, `+61491570156`.
 ```java
-package com.company;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import com.messagemedia.messages.MessageMediaMessagesClient;
 import com.messagemedia.messages.controllers.MessagesController;
+import com.messagemedia.messages.http.client.APICallBack;
+import com.messagemedia.messages.http.client.HttpContext;
+import com.messagemedia.messages.models.FormatEnum;
+import com.messagemedia.messages.models.Message;
 import com.messagemedia.messages.models.SendMessagesRequest;
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.messagemedia.messages.models.SendMessagesResponse;
 
-public class Main {
+public class App
+{
+    public static void main( String[] args )
+    {
 
-    public static void main(String[] args) throws Throwable {
-        // Configuration parameters and credentials
+     // Configuration parameters and credentials
         String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
         String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
         boolean useHmacAuth = false; // Change to true if you are using HMAC keys
@@ -173,63 +154,44 @@ public class Main {
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
         MessagesController messages = client.getMessages();
 
-        String bodyValue = "{\"messages\":" +
-                "[{\"content\":\"My first message\", " +
-                "\"destination_number\":\"+61466412529\"," +
-                "\"format\":\"MMS\"," +
-                "\"subject\":\"This is an MMS message\"," +
-                "\"media\":[\"https://upload.wikimedia.org/wikipedia/commons/6/6a/L80385-flash-superhero-logo-1544.png\"]" +
-                "}]}";
+        Message message = new Message();
+        message.setContent("My message");
+        message.setDestinationNumber("+61466412529");
+        message.setFormat(FormatEnum.MMS);
+        message.setSubject("This is an MMS");
+        message.setMedia(new ArrayList<String>(Arrays.asList("https://upload.wikimedia.org/wikipedia/commons/6/6a/L80385-flash-superhero-logo-1544.png")));
 
-        SendMessagesRequest request = new SendMessagesRequest();
 
-        ObjectMapper mapper = new ObjectMapper();
-        SendMessagesRequest body;
-		 try {
-			body = mapper.readValue(bodyValue, new TypeReference<SendMessagesRequest> (){});
+        List<Message> messagesList = new ArrayList<Message>();
+        messagesList.add(message);
 
-			APICallBack<SendMessagesResponse> callBack =  new APICallBack<SendMessagesResponse>() {
+        SendMessagesRequest body = new SendMessagesRequest();
+        body.setMessages(messagesList);
+
+        messages.sendMessagesAsync(body, new APICallBack<SendMessagesResponse>() {
 		        public void onSuccess(HttpContext context, SendMessagesResponse response) {
 		            // TODO success callback handler
 		        	System.out.println("success");
 		        }
 		        public void onFailure(HttpContext context, Throwable error) {
 		            // TODO failure callback handler
-		        	System.out.println("failure" + error.getLocalizedMessage());
+		        	System.out.println("failure");
 		        }
-			};
-
-
-			messages.createSendMessagesAsync(null, body, callBack);
-
-		} catch (JsonParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (JsonMappingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-
+			});
     }
-
 }
 ```
 
 ### Get Status of a Message
 You can get a messsage ID from a sent message by looking at the `message_id` from the response of the above example.
 ```java
-package com.company;
 import com.messagemedia.messages.MessageMediaMessagesClient;
 import com.messagemedia.messages.controllers.MessagesController;
+import com.messagemedia.messages.http.client.APICallBack;
+import com.messagemedia.messages.http.client.HttpContext;
+import com.messagemedia.messages.models.GetMessageStatusResponse;
 
-public class Main {
+public class App {
 
     public static void main(String[] args) throws Throwable {
         // Configuration parameters and credentials
@@ -241,8 +203,16 @@ public class Main {
         MessagesController messages = client.getMessages();
 
         String messageId = "YOUR_MESSAGE_ID";
-        String result = messages.getMessageStatus(messageId).parseAsString();
-        System.out.print(result);
+        messages.getMessageStatusAsync(messageId, new APICallBack<GetMessageStatusResponse>() {
+	        public void onSuccess(HttpContext context, GetMessageStatusResponse response) {
+	            // TODO success callback handler
+	        	System.out.println("success");
+	        }
+	        public void onFailure(HttpContext context, Throwable error) {
+	            // TODO failure callback handler
+	        	System.out.println("failure");
+	        }
+		});
     }
 
 }
@@ -251,11 +221,15 @@ public class Main {
 ### Get replies to a message
 You can check for replies that are sent to your messages
 ```java
-package com.company;
 import com.messagemedia.messages.MessageMediaMessagesClient;
+import com.messagemedia.messages.controllers.MessagesController;
 import com.messagemedia.messages.controllers.RepliesController;
+import com.messagemedia.messages.http.client.APICallBack;
+import com.messagemedia.messages.http.client.HttpContext;
+import com.messagemedia.messages.models.CheckRepliesResponse;
+import com.messagemedia.messages.models.GetMessageStatusResponse;
 
-public class Main {
+public class App {
 
     public static void main(String[] args) throws Throwable {
         // Configuration parameters and credentials
@@ -264,22 +238,19 @@ public class Main {
         boolean useHmacAuth = false; // Change to true if you are using HMAC keys
 
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        MessagesController messages = client.getMessages();
+        RepliesController replies = client.getReplies();
 
-        APICallBack<CheckRepliesResponse> callBack =  new APICallBack<CheckRepliesResponse>() {
-
+        replies.checkRepliesAsync(new APICallBack<CheckRepliesResponse>() {
+	        public void onSuccess(HttpContext context, CheckRepliesResponse response) {
+	            // TODO success callback handler
+	        	System.out.println("success");
+	        }
 	        public void onFailure(HttpContext context, Throwable error) {
 	            // TODO failure callback handler
-	        	System.out.println("failure" + error.getLocalizedMessage());
+	        	System.out.println("failure");
 	        }
+		});  
 
-			      public void onSuccess(HttpContext context, CheckRepliesResponse response) {
-				    // TODO Auto-generated method stub
-				    System.out.println(response.getReplies().toString());
-			    }
-		};
-
-		client.getReplies().getCheckRepliesAsync(null, callBack);
     }
 
 }
@@ -288,14 +259,19 @@ public class Main {
 ### Check Delivery Reports
 This endpoint allows you to check for delivery reports to inbound and outbound messages.
 ```java
-package com.company;
 import com.messagemedia.messages.MessageMediaMessagesClient;
 import com.messagemedia.messages.controllers.DeliveryReportsController;
+import com.messagemedia.messages.http.client.APICallBack;
+import com.messagemedia.messages.http.client.HttpContext;
+import com.messagemedia.messages.models.CheckDeliveryReportsResponse;
 
-public class Main {
 
-    public static void main(String[] args) throws Throwable {
-        // Configuration parameters and credentials
+public class App
+{
+    public static void main( String[] args )
+    {
+
+     // Configuration parameters and credentials
         String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
         String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
         boolean useHmacAuth = false; // Change to true if you are using HMAC keys
@@ -303,37 +279,31 @@ public class Main {
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
         DeliveryReportsController deliveryReports = client.getDeliveryReports();
 
-        APICallBack<CheckDeliveryReportsResponse> callBack =  new APICallBack<CheckDeliveryReportsResponse>() {
-
-	        public void onFailure(HttpContext context, Throwable error) {
-	            // TODO failure callback handler
-	        	System.out.println("failure" + error.getLocalizedMessage());
-	        }
-
-			     public void onSuccess(HttpContext context, CheckDeliveryReportsResponse response) {
-				       // TODO Auto-generated method stub
-				       System.out.println(response.getDeliveryReports().toString());
-			    }
-		};
-
-		deliveryReports.getCheckDeliveryReportsAsync(null, callBack);
+        deliveryReports.checkDeliveryReportsAsync(new APICallBack<CheckDeliveryReportsResponse>() {
+		        public void onSuccess(HttpContext context, CheckDeliveryReportsResponse response) {
+		            // TODO success callback handler
+		        	System.out.println("success");
+		        }
+		        public void onFailure(HttpContext context, Throwable error) {
+		            // TODO failure callback handler
+		        	System.out.println("failure");
+		        }
+			});
     }
-
 }
 ```
 
 ### Confirm Delivery Reports
 This endpoint allows you to mark delivery reports as confirmed so they're no longer returned by the Check Delivery Reports function.
 ```java
-import java.io.IOException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.messagemedia.messages.MessageMediaMessagesClient;
 import com.messagemedia.messages.controllers.DeliveryReportsController;
 import com.messagemedia.messages.http.client.APICallBack;
 import com.messagemedia.messages.http.client.HttpContext;
+import com.messagemedia.messages.models.CheckDeliveryReportsResponse;
 import com.messagemedia.messages.models.ConfirmDeliveryReportsAsReceivedRequest;
 import com.messagemedia.messages.models.DynamicResponse;
 
@@ -351,46 +321,20 @@ public class App
         MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
         DeliveryReportsController deliveryReports = client.getDeliveryReports();
 
-        String bodyValue = "{ " +
-        		"\"delivery_report_ids\":" +
-        		"\"011dcead-6988-4ad6-a1c7-6b6c68ea628d\"," +
-        		"\"3487b3fa-6586-4979-a233-2d1b095c7718\"," +
-        		"\"ba28e94b-c83d-4759-98e7-ff9c7edb87a1\"" +
-        		"]" +
-        		"}";
+        ConfirmDeliveryReportsAsReceivedRequest body = new ConfirmDeliveryReportsAsReceivedRequest();
+        List<String> reportIds = new ArrayList<String>();
+        reportIds.add("delivery-report-id");
 
-        ObjectMapper mapper = new ObjectMapper();
-        ConfirmDeliveryReportsAsReceivedRequest body;
-
-        try {
-			body = mapper.readValue(bodyValue, new TypeReference<ConfirmDeliveryReportsAsReceivedRequest> (){});
-
-			APICallBack<DynamicResponse> callBack =  new APICallBack<DynamicResponse>() {
-
+        deliveryReports.confirmDeliveryReportsAsReceivedAsync(body, new APICallBack<DynamicResponse>() {
+		        public void onSuccess(HttpContext context, DynamicResponse response) {
+		            // TODO success callback handler
+		        	System.out.println("success");
+		        }
 		        public void onFailure(HttpContext context, Throwable error) {
 		            // TODO failure callback handler
-		        	System.out.println("failure" + error.getLocalizedMessage());
+		        	System.out.println("failure");
 		        }
-
-				public void onSuccess(HttpContext context, DynamicResponse response) {
-					// TODO Auto-generated method stub
-					System.out.println(response.getRawBody().toString());
-				}
-			};
-
-			deliveryReports.createConfirmDeliveryReportsAsReceivedAsync(null, body, callBack);
-
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+			});
     }
 }
 ```
