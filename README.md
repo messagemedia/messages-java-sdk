@@ -339,6 +339,43 @@ public class App
 }
 ```
 
+### Check credits remaining (Prepaid accounts only)
+This endpoint allows you to check for credits remaining on your prepaid account.
+```java
+import com.messagemedia.messages.MessageMediaMessagesClient;
+import com.messagemedia.messages.controllers.MessagesController;
+import com.messagemedia.messages.http.client.APICallBack;
+import com.messagemedia.messages.http.client.HttpContext;
+import com.messagemedia.messages.models.DynamicResponse;
+
+
+public class App
+{
+    public static void main( String[] args )
+    {
+
+     // Configuration parameters and credentials
+        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
+        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
+        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
+
+        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
+        MessagesController messages = client.getMessages();
+        
+        messages.checkCreditsRemainingAsync(new APICallBack<DynamicResponse>() {
+		        public void onSuccess(HttpContext context, DynamicResponse response) {
+		            // TODO success callback handler
+		        	System.out.println(response.toString());
+		        }
+		        public void onFailure(HttpContext context, Throwable error) {
+		            // TODO failure callback handler
+		        	System.out.println("failure");
+		        }
+			});
+    }
+}
+```
+
 ## :closed_book: API Reference Documentation
 Check out the [full API documentation](https://developers.messagemedia.com/code/messages-api-documentation/) for more detailed information.
 
