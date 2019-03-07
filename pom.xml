@@ -7,7 +7,7 @@
 
     <groupId>com.messagemedia.sdk</groupId>
     <artifactId>messages</artifactId>
-    <version>1.0.0</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
     <name>MessageMedia Messages SDK</name>
 
