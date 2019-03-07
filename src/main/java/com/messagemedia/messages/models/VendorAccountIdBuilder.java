@@ -6,9 +6,7 @@ public class VendorAccountIdBuilder {
     //the instance to build
     private VendorAccountId vendorAccountId;
 
-    /**
-     * Default constructor to initialize the instance
-     */
+
     public VendorAccountIdBuilder() {
         vendorAccountId = new VendorAccountId();
     }
@@ -18,16 +16,12 @@ public class VendorAccountIdBuilder {
         return this;
     }
 
-    /**
-     * The account used to submit the original message.
-     */
+ 
     public VendorAccountIdBuilder accountId(String accountId) {
         vendorAccountId.setAccountId(accountId);
         return this;
     }
-    /**
-     * Build the instance with the given values
-     */
+  
     public VendorAccountId build() {
         return vendorAccountId;
     }

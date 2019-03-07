@@ -21,37 +21,13 @@ import com.messagemedia.messages.exceptions.APIException;
 public class AuthManager {
     private static final String HMAC_SHA1_ALGORITHM = "HmacSHA1";
 
-    /**
-     * Apply authentication by adding auth headers.
-     * 
-     * @param queryUrl The url of the request (e.g.:
-     *                 https://api.messagemedia.com/v1/replies)
-     * @param headers  The headers of the request
-     * 
-     * @return HttpRequest The HttpRequest with proper validation headers
-     * 
-     * @throws JsonProcessingException In the case of malformed JSON
-     * @throws APIException            If any error was encountered while applying
-     *                                 the authentication
-     */
+
     public static void apply(String queryUrl, Map<String, String> headers)
             throws JsonProcessingException, APIException {
         apply(queryUrl, headers, null);
     }
 
-    /**
-     * Apply authentication by adding auth headers.
-     * 
-     * @param queryUrl The url of the request (e.g.:
-     *                 https://api.messagemedia.com/v1/replies)
-     * @param headers  The headers of the request
-     * @param body     The (optional) body of the request
-     * 
-     * @return HttpRequest The HttpRequest with proper validation headers
-     * 
-     * @throws JsonProcessingException
-     * @throws APIException
-     */
+ 
     public static void apply(String queryUrl, Map<String, String> headers, String body)
             throws JsonProcessingException, APIException {
         if (hmacIsConfigured()) {
@@ -61,11 +37,7 @@ public class AuthManager {
         }
     }
 
-    /**
-     * Build authorization header value for basic auth
-     * 
-     * @return Authorization header value for this client
-     */
+
     private static String getBasicAuthForClient() {
         String val = Configuration.basicAuthUserName + ":" + Configuration.basicAuthPassword;
         return "Basic " + new String(Base64.getEncoder().encode(val.getBytes()));
@@ -145,11 +117,7 @@ public class AuthManager {
         return getHmacEncodingFor(signingString);
     }
 
-    /**
-     * Checks if HMAC authentication is configured.
-     * 
-     * @return True if it is, False otherwise.
-     */
+
     private static boolean hmacIsConfigured() {
         return Configuration.hmacAuthUserName != null && !Configuration.hmacAuthUserName.isEmpty()
                 && Configuration.hmacAuthPassword != null && !Configuration.hmacAuthPassword.isEmpty();
