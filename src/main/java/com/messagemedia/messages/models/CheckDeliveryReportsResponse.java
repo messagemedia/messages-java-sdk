@@ -1,32 +1,25 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.models;
 
 import java.util.*;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class CheckDeliveryReportsResponse 
         implements java.io.Serializable {
-    private static final long serialVersionUID = 5407550748654389690L;
-    private List<Object> deliveryReports;
-    /** GETTER
-     * TODO: Write general description for this method
-     */
+    private static final long serialVersionUID = -96012171860688264L;
+    private List<DeliveryReport> deliveryReports;
+   
     @JsonGetter("delivery_reports")
-    public List<Object> getDeliveryReports ( ) { 
+    public List<DeliveryReport> getDeliveryReports ( ) { 
         return this.deliveryReports;
     }
     
-    /** SETTER
-     * TODO: Write general description for this method
-     */
+ 
     @JsonSetter("delivery_reports")
-    public void setDeliveryReports (List<Object> value) { 
+    public void setDeliveryReports (List<DeliveryReport> value) { 
         this.deliveryReports = value;
     }
  
 }
- 

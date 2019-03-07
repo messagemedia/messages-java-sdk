@@ -1,10 +1,7 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.exceptions;
 
 import java.io.IOException;
+import java.io.InputStream;
 import com.messagemedia.messages.APIHelper;
 import com.messagemedia.messages.http.client.HttpContext;
 import com.messagemedia.messages.http.response.HttpStringResponse;
@@ -14,35 +11,26 @@ public class APIException extends Exception {
     private static final long serialVersionUID = 6424174253911720338L;
 
     //private fields
+    private int responseCode;
+
+    //private fields
     private HttpContext httpContext;
 
-    /**
-    * The HTTP response code from the API request
-    */
     public int getResponseCode() {
         return (httpContext != null) ? httpContext.getResponse().getStatusCode() : -1;
     }
 
-    /**
-     * The HTTP response body from the API request
-     */
+
     public HttpContext getHttpContext() {
         return httpContext;
     }
 
-    /**
-     * Initialization constructor
-     * @param reason The reason for throwing exception
-     */
+
     public APIException(String reason) {
         super(reason);
     }
 
-    /**
-     * Initialization constructor
-     * @param   reason  The reason for throwing exception
-     * @param   context The http context of the API exception
-     */
+
     public APIException(String reason, HttpContext context) {
         super(reason);
         this.httpContext = context;

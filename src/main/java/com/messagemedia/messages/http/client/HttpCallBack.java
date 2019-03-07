@@ -1,7 +1,3 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.http.client;
 
 import com.messagemedia.messages.http.request.HttpRequest;
@@ -14,11 +10,11 @@ public interface HttpCallBack {
      * Callback called just before the HTTP request is sent 
      * @param request The HTTP request to be executed
      */
-    public void onBeforeRequest(HttpRequest request);
+    public void OnBeforeRequest(HttpRequest request);
     
     /**
      * Callback called just after the HTTP response is received
      * @param context Context for the HTTP call
      */
-    public void onAfterResponse(HttpContext context);
+    public void OnAfterResponse(HttpContext context);
 }

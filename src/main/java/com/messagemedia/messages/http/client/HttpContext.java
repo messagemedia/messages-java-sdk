@@ -1,19 +1,13 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.http.client;
 
 import com.messagemedia.messages.http.request.HttpRequest;
 import com.messagemedia.messages.http.response.HttpResponse;
 
-public class HttpContext 
-{
+public class HttpContext {
     private HttpRequest _request;
     private HttpResponse _response;
 
-    public HttpContext(HttpRequest request, HttpResponse response) 
-    {
+    public HttpContext(HttpRequest request, HttpResponse response) {
         _request = request;
         _response = response;
     }
@@ -22,8 +16,7 @@ public class HttpContext
      * Getter for the Http Request
      * @return HttpRequest request
      */
-    public HttpRequest getRequest() 
-    {
+    public HttpRequest getRequest() {
         return _request;
     }
 
@@ -31,8 +24,7 @@ public class HttpContext
      * Getter for the Http Response
      * @return HttpResponse response
      */
-    public HttpResponse getResponse() 
-    {
+    public HttpResponse getResponse() {
         return _response;
     }
 }
