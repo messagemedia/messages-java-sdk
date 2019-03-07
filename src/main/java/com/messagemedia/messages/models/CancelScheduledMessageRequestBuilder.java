@@ -1,8 +1,6 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.models;
+
+import java.util.*;
 
 public class CancelScheduledMessageRequestBuilder {
     //the instance to build

@@ -1,7 +1,3 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.models;
 
 import java.util.*;

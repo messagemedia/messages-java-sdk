@@ -1,32 +1,29 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.models;
 
 import java.util.*;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class CheckRepliesResponse 
         implements java.io.Serializable {
-    private static final long serialVersionUID = 5152723690941598473L;
-    private List<Object> replies;
+    private static final long serialVersionUID = -7772933677948924L;
+    private List<Reply> replies;
     /** GETTER
-     * TODO: Write general description for this method
+     * The oldest 100 unconfirmed replies
      */
     @JsonGetter("replies")
-    public List<Object> getReplies ( ) { 
+    public List<Reply> getReplies ( ) { 
         return this.replies;
     }
     
     /** SETTER
-     * TODO: Write general description for this method
+     * The oldest 100 unconfirmed replies
      */
     @JsonSetter("replies")
-    public void setReplies (List<Object> value) { 
+    public void setReplies (List<Reply> value) { 
         this.replies = value;
     }
  
 }
- 

@@ -1,7 +1,3 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.models;
 
 import java.util.*;
@@ -17,7 +13,10 @@ public class CheckRepliesResponseBuilder {
         checkRepliesResponse = new CheckRepliesResponse();
     }
 
-    public CheckRepliesResponseBuilder replies(List<Object> replies) {
+    /**
+     * The oldest 100 unconfirmed replies
+     */
+    public CheckRepliesResponseBuilder replies(List<Reply> replies) {
         checkRepliesResponse.setReplies(replies);
         return this;
     }

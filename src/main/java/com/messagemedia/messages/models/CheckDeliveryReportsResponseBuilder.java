@@ -1,7 +1,3 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.models;
 
 import java.util.*;
@@ -17,7 +13,10 @@ public class CheckDeliveryReportsResponseBuilder {
         checkDeliveryReportsResponse = new CheckDeliveryReportsResponse();
     }
 
-    public CheckDeliveryReportsResponseBuilder deliveryReports(List<Object> deliveryReports) {
+    /**
+     * The oldest 100 unconfirmed delivery reports
+     */
+    public CheckDeliveryReportsResponseBuilder deliveryReports(List<DeliveryReport> deliveryReports) {
         checkDeliveryReportsResponse.setDeliveryReports(deliveryReports);
         return this;
     }

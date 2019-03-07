@@ -1,7 +1,3 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.models;
 
 import java.util.*;
@@ -17,7 +13,7 @@ public class SendMessagesResponseBuilder {
         sendMessagesResponse = new SendMessagesResponse();
     }
 
-    public SendMessagesResponseBuilder messages(List<Object> messages) {
+    public SendMessagesResponseBuilder messages(List<Message> messages) {
         sendMessagesResponse.setMessages(messages);
         return this;
     }

@@ -1,22 +1,20 @@
-/*
- * MessageMediaMessages
- *
- */
 package com.messagemedia.messages.models;
 
 import java.util.*;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class SendMessagesRequest 
         implements java.io.Serializable {
-    private static final long serialVersionUID = 5575041882781385339L;
-    private List<Object> messages;
+    private static final long serialVersionUID = 5119050306973624L;
+    private List<Message> messages;
     /** GETTER
      * TODO: Write general description for this method
      */
     @JsonGetter("messages")
-    public List<Object> getMessages ( ) { 
+    public List<Message> getMessages ( ) { 
         return this.messages;
     }
     
@@ -24,9 +22,8 @@ public class SendMessagesRequest
      * TODO: Write general description for this method
      */
     @JsonSetter("messages")
-    public void setMessages (List<Object> value) { 
+    public void setMessages (List<Message> value) { 
         this.messages = value;
     }
  
 }
- 
