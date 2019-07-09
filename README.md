@@ -1,5 +1,4 @@
 # MessageMedia Messages Java SDK
-[![Travis Build Status](https://api.travis-ci.org/messagemedia/messages-java-sdk.svg?branch=master)](https://travis-ci.org/messagemedia/messages-java-sdk)
 [![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 [![maven](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/messagemedia/sdk/messages/maven-metadata.xml.svg)](https://mvnrepository.com/artifact/com.messagemedia.sdk/messages)
 
