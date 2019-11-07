@@ -6,7 +6,9 @@ public class ConfirmRepliesAsReceivedRequestBuilder {
     //the instance to build
     private ConfirmRepliesAsReceivedRequest confirmRepliesAsReceivedRequest;
 
-
+    /**
+     * Default constructor to initialize the instance
+     */
     public ConfirmRepliesAsReceivedRequestBuilder() {
         confirmRepliesAsReceivedRequest = new ConfirmRepliesAsReceivedRequest();
     }
@@ -15,7 +17,9 @@ public class ConfirmRepliesAsReceivedRequestBuilder {
         confirmRepliesAsReceivedRequest.setReplyIds(replyIds);
         return this;
     }
-  
+    /**
+     * Build the instance with the given values
+     */
     public ConfirmRepliesAsReceivedRequest build() {
         return confirmRepliesAsReceivedRequest;
     }

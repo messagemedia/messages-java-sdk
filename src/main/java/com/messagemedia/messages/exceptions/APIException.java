@@ -16,21 +16,33 @@ public class APIException extends Exception {
     //private fields
     private HttpContext httpContext;
 
+    /**
+    * The HTTP response code from the API request
+    */
     public int getResponseCode() {
         return (httpContext != null) ? httpContext.getResponse().getStatusCode() : -1;
     }
 
-
+    /**
+     * The HTTP response body from the API request
+     */
     public HttpContext getHttpContext() {
         return httpContext;
     }
 
-
+    /**
+     * Initialization constructor
+     * @param reason The reason for throwing exception
+     */
     public APIException(String reason) {
         super(reason);
     }
 
-
+    /**
+     * Initialization constructor
+     * @param   reason  The reason for throwing exception
+     * @param   context The http context of the API exception
+     */
     public APIException(String reason, HttpContext context) {
         super(reason);
         this.httpContext = context;

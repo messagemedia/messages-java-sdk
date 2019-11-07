@@ -6,7 +6,9 @@ public class SendMessagesResponseBuilder {
     //the instance to build
     private SendMessagesResponse sendMessagesResponse;
 
-
+    /**
+     * Default constructor to initialize the instance
+     */
     public SendMessagesResponseBuilder() {
         sendMessagesResponse = new SendMessagesResponse();
     }
@@ -15,7 +17,9 @@ public class SendMessagesResponseBuilder {
         sendMessagesResponse.setMessages(messages);
         return this;
     }
-  
+    /**
+     * Build the instance with the given values
+     */
     public SendMessagesResponse build() {
         return sendMessagesResponse;
     }

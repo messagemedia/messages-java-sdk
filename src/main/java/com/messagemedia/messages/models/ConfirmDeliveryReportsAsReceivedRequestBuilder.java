@@ -6,7 +6,9 @@ public class ConfirmDeliveryReportsAsReceivedRequestBuilder {
     //the instance to build
     private ConfirmDeliveryReportsAsReceivedRequest confirmDeliveryReportsAsReceivedRequest;
 
-
+    /**
+     * Default constructor to initialize the instance
+     */
     public ConfirmDeliveryReportsAsReceivedRequestBuilder() {
         confirmDeliveryReportsAsReceivedRequest = new ConfirmDeliveryReportsAsReceivedRequest();
     }
@@ -15,7 +17,9 @@ public class ConfirmDeliveryReportsAsReceivedRequestBuilder {
         confirmDeliveryReportsAsReceivedRequest.setDeliveryReportIds(deliveryReportIds);
         return this;
     }
- 
+    /**
+     * Build the instance with the given values
+     */
     public ConfirmDeliveryReportsAsReceivedRequest build() {
         return confirmDeliveryReportsAsReceivedRequest;
     }

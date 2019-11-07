@@ -6,7 +6,9 @@ public class CancelScheduledMessageRequestBuilder {
     //the instance to build
     private CancelScheduledMessageRequest cancelScheduledMessageRequest;
 
- 
+    /**
+     * Default constructor to initialize the instance
+     */
     public CancelScheduledMessageRequestBuilder() {
         cancelScheduledMessageRequest = new CancelScheduledMessageRequest();
     }
@@ -15,7 +17,9 @@ public class CancelScheduledMessageRequestBuilder {
         cancelScheduledMessageRequest.setStatus(status);
         return this;
     }
-
+    /**
+     * Build the instance with the given values
+     */
     public CancelScheduledMessageRequest build() {
         return cancelScheduledMessageRequest;
     }

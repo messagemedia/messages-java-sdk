@@ -109,8 +109,12 @@ public class App
 
         SendMessagesRequest body = new SendMessagesRequest();
         body.setMessages(messagesList);
+        
+      //load all optional headers for the outgoing API request
+        Map<String, String> optHeaders = new HashMap<String, String>();
+        optHeaders.put("Account", "");
 
-        messages.sendMessagesAsync(body, new APICallBack<SendMessagesResponse>() {
+        messages.sendMessagesAsync(body, optHeaders, new APICallBack<SendMessagesResponse>() {
 		        public void onSuccess(HttpContext context, SendMessagesResponse response) {
 		            // TODO success callback handler
 		        	System.out.println("success");
