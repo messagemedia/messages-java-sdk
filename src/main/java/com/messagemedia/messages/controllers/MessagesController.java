@@ -254,11 +254,10 @@ public class MessagesController extends BaseController {
      * @return    Returns the SendMessagesResponse response from the API call 
      */
     public SendMessagesResponse sendMessages(
-                final SendMessagesRequest body, 
-                Map<String, String> optHeaders
+                final SendMessagesRequest body
     ) throws Throwable {
 
-        HttpRequest _request = _buildSendMessagesRequest(body, optHeaders);
+        HttpRequest _request = _buildSendMessagesRequest(body);
         HttpResponse _response = getClientInstance().executeAsString(_request);
         HttpContext _context = new HttpContext(_request, _response);
 
@@ -335,7 +334,6 @@ public class MessagesController extends BaseController {
      */
     public void sendMessagesAsync(
                 final SendMessagesRequest body,
-                Map<String, String> optHeaders,
                 final APICallBack<SendMessagesResponse> callBack
     ) {
         Runnable _responseTask = new Runnable() {
@@ -343,7 +341,7 @@ public class MessagesController extends BaseController {
 
                 HttpRequest _request;
                 try {
-                    _request = _buildSendMessagesRequest(body, optHeaders);
+                    _request = _buildSendMessagesRequest(body);
                 } catch (Exception e) {
                     callBack.onFailure(null, e);
                     return;
@@ -376,7 +374,7 @@ public class MessagesController extends BaseController {
      * Builds the HttpRequest object for sendMessages
      */
     private HttpRequest _buildSendMessagesRequest(
-                final SendMessagesRequest body, Map<String, String> optHeaders) throws IOException, APIException {
+                final SendMessagesRequest body) throws IOException, APIException {
         //the base uri for api requests
         String _baseUri = Configuration.baseUri;
 
@@ -390,7 +388,7 @@ public class MessagesController extends BaseController {
         _headers.put("user-agent", BaseController.userAgent);
         _headers.put("accept", "application/json");
         _headers.put("content-type", "application/json");
-        _headers.putAll(optHeaders);
+
 
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().postBody(_queryUrl, _headers, APIHelper.serialize(body));
