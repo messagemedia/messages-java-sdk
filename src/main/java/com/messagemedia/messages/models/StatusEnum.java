@@ -4,20 +4,49 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Enum StatusEnum.
+ */
 public enum StatusEnum {
-    ENROUTE, //TODO: Write general description for this element
-    SUBMITTED, //TODO: Write general description for this element
-    DELIVERED, //TODO: Write general description for this element
-    EXPIRED, //TODO: Write general description for this element
-    REJECTED, //TODO: Write general description for this element
-    UNDELIVERABLE, //TODO: Write general description for this element
-    QUEUED, //TODO: Write general description for this element
-    PROCESSED, //TODO: Write general description for this element
-    CANCELLED, //TODO: Write general description for this element
-    SCHEDULED, //TODO: Write general description for this element
+    
+    /** The enroute. */
+    ENROUTE, 
+ /** The submitted. */
+ //TODO: Write general description for this element
+    SUBMITTED, 
+ /** The delivered. */
+ //TODO: Write general description for this element
+    DELIVERED, 
+ /** The expired. */
+ //TODO: Write general description for this element
+    EXPIRED, 
+ /** The rejected. */
+ //TODO: Write general description for this element
+    REJECTED, 
+ /** The undeliverable. */
+ //TODO: Write general description for this element
+    UNDELIVERABLE, 
+ /** The queued. */
+ //TODO: Write general description for this element
+    QUEUED, 
+ /** The processed. */
+ //TODO: Write general description for this element
+    PROCESSED, 
+ /** The cancelled. */
+ //TODO: Write general description for this element
+    CANCELLED, 
+ /** The scheduled. */
+ //TODO: Write general description for this element
+    SCHEDULED, 
+ /** The failed. */
+ //TODO: Write general description for this element
     FAILED; //TODO: Write general description for this element
 
-    private static TreeMap<String, StatusEnum> valueMap = new TreeMap<String, StatusEnum>();
+    /** The value map. */
+ private static TreeMap<String, StatusEnum> valueMap = new TreeMap<String, StatusEnum>();
+    
+    /** The value. */
     private String value;
 
     static {
@@ -47,23 +76,30 @@ public enum StatusEnum {
     }
 
     /**
-     * Returns the enum member associated with the given string value
-     * @return The enum member against the given string value */
+     * Returns the enum member associated with the given string value.
+     *
+     * @param toConvert the to convert
+     * @return The enum member against the given string value
+     */
     @com.fasterxml.jackson.annotation.JsonCreator
     public static StatusEnum fromString(String toConvert) {
         return valueMap.get(toConvert);
     }
 
     /**
-     * Returns the string value associated with the enum member
-     * @return The string value against enum member */
+     * Returns the string value associated with the enum member.
+     *
+     * @return The string value against enum member
+     */
     @com.fasterxml.jackson.annotation.JsonValue
     public String value() {
         return value;
     }
         
     /**
-     * Get string representation of this enum
+     * Get string representation of this enum.
+     *
+     * @return the string
      */
     @Override
     public String toString() {
@@ -71,9 +107,11 @@ public enum StatusEnum {
     }
 
     /**
-     * Convert list of StatusEnum values to list of string values
+     * Convert list of StatusEnum values to list of string values.
+     *
      * @param toConvert The list of StatusEnum values to convert
-     * @return List of representative string values */
+     * @return List of representative string values
+     */
     public static List<String> toValue(List<StatusEnum> toConvert) {
         if(toConvert == null)
             return null;

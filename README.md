@@ -65,7 +65,7 @@ Use the following dependency in your project to grab via Maven:
 <dependency>
   <groupId>com.messagemedia.sdk</groupId>
   <artifactId>messages</artifactId>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
 </dependency>
 
 ```

@@ -3,33 +3,42 @@ package com.messagemedia.messages;
 import com.messagemedia.messages.controllers.*;
 import com.messagemedia.messages.http.client.HttpClient;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MessageMediaMessagesClient.
+ */
 public class MessageMediaMessagesClient {
+    
     /**
-     * Singleton access to DeliveryReports controller
-     * @return	Returns the DeliveryReportsController instance 
+     * Singleton access to DeliveryReports controller.
+     *
+     * @return Returns the DeliveryReportsController instance
      */
     public DeliveryReportsController getDeliveryReports() {
         return DeliveryReportsController.getInstance();
     }
 
     /**
-     * Singleton access to Messages controller
-     * @return	Returns the MessagesController instance 
+     * Singleton access to Messages controller.
+     *
+     * @return Returns the MessagesController instance
      */
     public MessagesController getMessages() {
         return MessagesController.getInstance();
     }
 
     /**
-     * Singleton access to Replies controller
-     * @return	Returns the RepliesController instance 
+     * Singleton access to Replies controller.
+     *
+     * @return Returns the RepliesController instance
      */
     public RepliesController getReplies() {
         return RepliesController.getInstance();
     }
 
     /**
-     * Get the shared http client currently being used for API calls
+     * Get the shared http client currently being used for API calls.
+     *
      * @return The http client instance currently being used
      */
     public HttpClient getSharedHttpClient() {
@@ -37,7 +46,8 @@ public class MessageMediaMessagesClient {
     }
     
     /**
-     * Set a shared http client to be used for API calls
+     * Set a shared http client to be used for API calls.
+     *
      * @param httpClient The http client to use
      */
     public void setSharedHttpClient(HttpClient httpClient) {
@@ -45,7 +55,11 @@ public class MessageMediaMessagesClient {
     }
 
     /**
-     * Client initialization constructor
+     * Client initialization constructor.
+     *
+     * @param authUserName the auth user name
+     * @param authPassword the auth password
+     * @param hmacAuth the hmac auth
      */
     public MessageMediaMessagesClient(String authUserName, String authPassword, boolean hmacAuth) {
         if(!hmacAuth)

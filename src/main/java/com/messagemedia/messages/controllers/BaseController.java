@@ -8,21 +8,27 @@ import com.messagemedia.messages.http.client.HttpCallBack;
 import com.messagemedia.messages.http.client.OkClient;
 import com.messagemedia.messages.http.response.HttpResponse;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BaseController.
+ */
 public abstract class BaseController {
-    /**
-     * Private variable to keep shared reference of client instance
-     */
+    
+    /** Private variable to keep shared reference of client instance. */
     private static HttpClient clientInstance = null;
+    
+    /** The Constant syncObject. */
     private static final Object syncObject = new Object();
+    
+    /** The Constant userAgent. */
     protected static final String userAgent = "messagemedia-messages";
 
-    /**
-     * Protected variable to keep reference of httpCallBack instance if user provides any
-     */
+    /** Protected variable to keep reference of httpCallBack instance if user provides any. */
     protected HttpCallBack httpCallBack = null;
     
     /**
-     * Get httpCallBack associated with this controller
+     * Get httpCallBack associated with this controller.
+     *
      * @return HttpCallBack
      */
     public HttpCallBack getHttpCallBack() {
@@ -30,16 +36,18 @@ public abstract class BaseController {
     }
     
     /**
-     * Set the httpCallBack for this controller
-     * @param httpCallBack
+     * Set the httpCallBack for this controller.
+     *
+     * @param httpCallBack the new http call back
      */
     public void setHttpCallBack(HttpCallBack httpCallBack) {
         this.httpCallBack = httpCallBack;
     }
 
     /**
-     * Shared instance of the Http client
-     * @return The shared instance of the http client 
+     * Shared instance of the Http client.
+     *
+     * @return The shared instance of the http client
      */
     public static HttpClient getClientInstance() {
         if (null == clientInstance) {
@@ -53,8 +61,9 @@ public abstract class BaseController {
     }
 
     /**
-     * Shared instance of the Http client
-     * @param    client    The shared instance of the http client 
+     * Shared instance of the Http client.
+     *
+     * @param client the new client instance
      */
     public static void setClientInstance(HttpClient client) {
         if (null != client) {
@@ -65,10 +74,13 @@ public abstract class BaseController {
             }
         }
     }
+    
     /**
-     * Validates the response against HTTP errors defined at the API level
-     * @param   _response    The response recieved
-     * @param   context     Context of the request and the recieved response 
+     * Validates the response against HTTP errors defined at the API level.
+     *
+     * @param _response the response
+     * @param context the context
+     * @throws APIException the API exception
      */
     protected void validateResponse(HttpResponse _response, HttpContext context) 
             throws APIException {

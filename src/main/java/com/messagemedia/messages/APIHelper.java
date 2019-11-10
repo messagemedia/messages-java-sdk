@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package com.messagemedia.messages;
 
 import java.io.File;
@@ -29,13 +32,23 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import com.messagemedia.messages.exceptions.APIException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class APIHelper.
+ */
 public class APIHelper {
+    
+    /** The scheduler. */
     /* used for async execution of API calls using a thread pool */
     private static ExecutorService scheduler = null;
+    
+    /** The Constant syncRoot. */
     private static final Object syncRoot = new Object();
   
     /**
-     * Singleton access to the threadpool scheduler
+     * Singleton access to the threadpool scheduler.
+     *
+     * @return the scheduler
      */
     public static ExecutorService getScheduler() {
         if (null == scheduler) {
@@ -49,7 +62,7 @@ public class APIHelper {
     }
 
     /**
-     * Shutdown all the threads
+     * Shutdown all the threads.
      */
     public static void shutdown() {
         if(null != scheduler) {
@@ -57,6 +70,7 @@ public class APIHelper {
         }
     }
 
+    /** The mapper. */
     /* used for deserialization of json data */
     public static ObjectMapper mapper = new ObjectMapper()
     {
@@ -69,7 +83,8 @@ public class APIHelper {
 
     /**
      * Get a JsonSerializer instance from the provided annotation.
-     * @param  serializerAnnotation The Annotation containing information about the serializer
+     *
+     * @param serializerAnnotation the serializer annotation
      * @return The JsonSerializer instance of the required type
      */
     private static JsonSerializer getSerializer(JsonSerialize serializerAnnotation)
@@ -84,8 +99,10 @@ public class APIHelper {
 
     /**
      * JSON Serialization of a given object.
-     * @param  obj The object to serialize into JSON
+     *
+     * @param obj the obj
      * @return The serialized Json string representation of the given object
+     * @throws JsonProcessingException the json processing exception
      */
     public static String serialize(Object obj)
             throws JsonProcessingException {
@@ -97,9 +114,11 @@ public class APIHelper {
 
     /**
      * JSON Serialization of a given object using a specified JsonSerializer.
-     * @param  obj The object to serialize into JSON
-     * @param  serializer The instance of JsonSerializer to use
+     *
+     * @param obj the obj
+     * @param serializer the serializer
      * @return The serialized Json string representation of the given object
+     * @throws JsonProcessingException the json processing exception
      */
     public static String serialize(Object obj, final JsonSerializer serializer)
             throws JsonProcessingException {
@@ -135,9 +154,12 @@ public class APIHelper {
 
     /**
      * JSON Deserialization of the given json string.
-     * @param   json The json string to deserialize
-     * @param   <T>  The type of the object to deserialize into
+     *
+     * @param <T> the generic type
+     * @param json the json
+     * @param typeReference the type reference
      * @return  The deserialized object
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static <T extends Object> T deserialize(String json, TypeReference<T> typeReference)
             throws IOException {
@@ -149,11 +171,14 @@ public class APIHelper {
 
     /**
      * JSON Deserialization of the given json string using a specified JsonDerializer.
-     * @param   json The json string to deserialize
-     * @param   <T>  The type of the object to deserialize into
-     * @param   cls  The class to attach the deserializer to
-     * @param   deserializer  The deserializer to use
+     *
+     * @param <T> the generic type
+     * @param json the json
+     * @param typeReference the type reference
+     * @param cls the cls
+     * @param deserializer the deserializer
      * @return  The deserialized object
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static <T extends Object> List<T> deserialize(String json, final TypeReference<List<T>> typeReference,
             final Class<T> cls, final JsonDeserializer<T> deserializer) throws IOException {
@@ -173,9 +198,12 @@ public class APIHelper {
 
     /**
      * JSON Deserialization of the given json string.
-     * @param   jParser The json parser for reading json to deserialize
-     * @param   <T> The type of the object to deserialize into
+     *
+     * @param <T> the generic type
+     * @param json the json
+     * @param typeReference the type reference
      * @return  The deserialized object
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static <T extends Object> T deserialize(String json, Class<T> typeReference)
             throws IOException {
@@ -187,8 +215,10 @@ public class APIHelper {
 
     /**
      * Populates an object of an APIException subclass with the required properties.
-     * @param   json The json string to deserialize
-     * @param   <APIException>  The object to populate.
+     *
+     * @param json the json
+     * @param obj the obj
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static void populate(String json, APIException obj)
             throws IOException {
@@ -198,8 +228,10 @@ public class APIHelper {
 
     /**
      * JSON Deserialization of the given json string.
-     * @param   json    The json string to deserialize
+     *
+     * @param json the json
      * @return  The deserialized json as a Map
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static LinkedHashMap<String, Object> deserialize(String json)
             throws IOException {
@@ -212,9 +244,10 @@ public class APIHelper {
     }
 
     /**
-     * Replaces template parameters in the given url
-     * @param   queryBuilder    The query string builder to replace the template parameters
-     * @param   parameters      The parameters to replace in the url
+     * Replaces template parameters in the given url.
+     *
+     * @param queryBuilder the query builder
+     * @param parameters the parameters
      */
     public static void appendUrlWithTemplateParameters(StringBuilder queryBuilder, Map<String, Object> parameters) {
         //perform parameter validation
@@ -242,9 +275,10 @@ public class APIHelper {
     }
 
     /**
-     * Appends the given set of parameters to the given query string
-     * @param   queryBuilder  The query url string to append the parameters
-     * @param   parameters    The parameters to append
+     * Appends the given set of parameters to the given query string.
+     *
+     * @param queryBuilder the query builder
+     * @param parameters the parameters
      */
     public static void appendUrlWithQueryParameters(StringBuilder queryBuilder, Map<String, Object> parameters) {
         //perform parameter validation
@@ -262,8 +296,9 @@ public class APIHelper {
     }
 
     /**
-     * Validates if the string is null, empty or whitespace
-     * @param   s The string to validate
+     * Validates if the string is null, empty or whitespace.
+     *
+     * @param s the s
      * @return  The result of validation
      */
     public static boolean isNullOrWhiteSpace(String s) {
@@ -283,10 +318,11 @@ public class APIHelper {
     }
 
     /**
-     * Replaces all occurrences of the given string in the string builder
-     * @param   stringBuilder The string builder to update with replaced strings
-     * @param   toReplace     The string to replace in the string builder
-     * @param   replaceWith   The string to replace with
+     * Replaces all occurrences of the given string in the string builder.
+     *
+     * @param stringBuilder the string builder
+     * @param toReplace the to replace
+     * @param replaceWith the replace with
      */
     public static void replaceAll(StringBuilder stringBuilder, String toReplace, String replaceWith) {
         int index = stringBuilder.indexOf(toReplace);
@@ -299,7 +335,9 @@ public class APIHelper {
     }
 
     /**
-     * Removes null values from the given map
+     * Removes null values from the given map.
+     *
+     * @param map the map
      */
     public static void removeNullValues(Map<String, ?> map) {
         if(map == null)
@@ -308,8 +346,9 @@ public class APIHelper {
     }
 
     /**
-     * Validates and processes the given Url
-     * @param    url The given Url to process
+     * Validates and processes the given Url.
+     *
+     * @param url the url
      * @return   Pre-process Url as string
      */
     public static String cleanUrl(StringBuilder url)
@@ -332,8 +371,9 @@ public class APIHelper {
     }
 
     /**
-     * Prepares Array style form fields from a given array of values
-     * @param   value   Value for the form fields
+     * Prepares Array style form fields from a given array of values.
+     *
+     * @param value the value
      * @return  Dictionary of form fields created from array elements
      */
     public static List<SimpleEntry<String, Object>> prepareFormFields(Object value) {
@@ -348,10 +388,11 @@ public class APIHelper {
     }
 
     /**
-     * Encodes a given object to url encoded string
-     * @param name
-     * @param obj
-     * @param objBuilder
+     * Encodes a given object to url encoded string.
+     *
+     * @param name the name
+     * @param obj the obj
+     * @param objBuilder the obj builder
      */
     private static void encodeObjectAsQueryString(String name, Object obj, StringBuilder objBuilder) {
         try {
@@ -388,10 +429,12 @@ public class APIHelper {
     }
 
     /**
-     * Used for flattening a collection of objects into a string
-     * @param   array     Array of elements to flatten
-     * @param   fmt       Format string to use for array flattening
-     * @param   separator Separator to use for string concat
+     * Used for flattening a collection of objects into a string.
+     *
+     * @param elemName the elem name
+     * @param array the array
+     * @param fmt the fmt
+     * @param separator the separator
      * @return  Representative string made up of array elements
      */
     private static String flattenCollection(String elemName, Collection<?> array, String fmt, char separator) {
@@ -419,9 +462,10 @@ public class APIHelper {
     }
 
     /**
-     * Tries Url encode using UTF-8
+     * Tries Url encode using UTF-8.
+     *
      * @param value The value to url encode
-     * @return
+     * @return the string
      */
     private static String tryUrlEncode(String value) {
         try {
@@ -432,12 +476,13 @@ public class APIHelper {
     }
 
     /**
-     * Converts a given object to a form encoded map
+     * Converts a given object to a form encoded map.
+     *
      * @param objName Name of the object
      * @param obj The object to convert into a map
      * @param objectList The object list to populate
      * @param processed List of objects hashCodes that are already parsed
-     * @throws InvalidObjectException
+     * @throws InvalidObjectException the invalid object exception
      */
     private static void objectToList(
             String objName, Object obj, List<SimpleEntry<String,Object>> objectList, HashSet<Integer> processed)
@@ -551,12 +596,13 @@ public class APIHelper {
     }
 
     /**
-     * While processing objects to map, decides whether to perform recursion or load value
+     * While processing objects to map, decides whether to perform recursion or load value.
+     *
      * @param key The key to used for creating key value pair
      * @param value The value to process against the given key
      * @param objectList The object list to process with key value pair
      * @param processed List of processed objects hashCodes
-     * @throws InvalidObjectException
+     * @throws InvalidObjectException the invalid object exception
      */
     private static void loadKeyValuePairForEncoding(
             String key, Object value, List<SimpleEntry<String, Object>> objectList, HashSet<Integer> processed)
@@ -570,13 +616,14 @@ public class APIHelper {
     }
 
     /**
-     * While processing objects to map, loads value after serializing
+     * While processing objects to map, loads value after serializing.
+     *
      * @param key The key to used for creating key value pair
      * @param value The value to process against the given key
      * @param objectList The object list to process with key value pair
      * @param processed List of processed objects hashCodes
-     * @param serializerAnnotation 
-     * @throws InvalidObjectException
+     * @param serializerAnnotation the serializer annotation
+     * @throws InvalidObjectException the invalid object exception
      */
     private static void loadKeyValuePairForEncoding(
             String key, Object value, List<SimpleEntry<String, Object>> objectList, HashSet<Integer> processed,
@@ -603,7 +650,8 @@ public class APIHelper {
             Integer.class, Long.class, Float.class, Double.class, Void.class, File.class));
 
     /**
-     * Checks if the given class can be wrapped directly
+     * Checks if the given class can be wrapped directly.
+     *
      * @param clazz The given class
      * @return true if the given class is an autoboxed class e.g., Integer
      */

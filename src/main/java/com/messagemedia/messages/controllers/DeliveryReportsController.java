@@ -17,14 +17,23 @@ import com.messagemedia.messages.http.response.HttpStringResponse;
 import com.messagemedia.messages.http.client.APICallBack;
 import com.messagemedia.messages.controllers.syncwrapper.APICallBackCatcher;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DeliveryReportsController.
+ */
 public class DeliveryReportsController extends BaseController {
+    
+    /** The Constant syncObject. */
     //private static variables for the singleton pattern
     private static final Object syncObject = new Object();
+    
+    /** The instance. */
     private static DeliveryReportsController instance = null;
 
     /**
-     * Singleton pattern implementation 
-     * @return The singleton instance of the DeliveryReportsController class 
+     * Singleton pattern implementation .
+     *
+     * @return The singleton instance of the DeliveryReportsController class
      */
     public static DeliveryReportsController getInstance() {
         if (null == instance) {
@@ -54,8 +63,10 @@ public class DeliveryReportsController extends BaseController {
      * }
      * ```
      * Up to 100 delivery reports can be confirmed in a single confirm delivery reports request.
-     * @param    body    Required parameter: Example: 
-     * @return    Returns the DynamicResponse response from the API call 
+     *
+     * @param body the body
+     * @return    Returns the DynamicResponse response from the API call
+     * @throws Throwable the throwable
      */
     public DynamicResponse confirmDeliveryReportsAsReceived(
                 final ConfirmDeliveryReportsAsReceivedRequest body
@@ -85,8 +96,9 @@ public class DeliveryReportsController extends BaseController {
      * }
      * ```
      * Up to 100 delivery reports can be confirmed in a single confirm delivery reports request.
-     * @param    body    Required parameter: Example: 
-     * @return    Returns the void response from the API call 
+     *
+     * @param body the body
+     * @param callBack the call back
      */
     public void confirmDeliveryReportsAsReceivedAsync(
                 final ConfirmDeliveryReportsAsReceivedRequest body,
@@ -127,7 +139,12 @@ public class DeliveryReportsController extends BaseController {
     }
 
     /**
-     * Builds the HttpRequest object for confirmDeliveryReportsAsReceived
+     * Builds the HttpRequest object for confirmDeliveryReportsAsReceived.
+     *
+     * @param body the body
+     * @return the http request
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws APIException the API exception
      */
     private HttpRequest _buildConfirmDeliveryReportsAsReceivedRequest(
                 final ConfirmDeliveryReportsAsReceivedRequest body) throws IOException, APIException {
@@ -153,13 +170,19 @@ public class DeliveryReportsController extends BaseController {
         if (getHttpCallBack() != null) {
             getHttpCallBack().OnBeforeRequest(_request);
         }
+        
+      //apply basic or hmac-based auth
+        AuthManager.apply(_queryBuilder.toString(), _request.getHeaders(), APIHelper.serialize(body));
 
         return _request;
     }
 
     /**
-     * Processes the response for confirmDeliveryReportsAsReceived
-     * @return An object of type void
+     * Processes the response for confirmDeliveryReportsAsReceived.
+     *
+     * @param _context the context
+     * @throws APIException the API exception
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private DynamicResponse _handleConfirmDeliveryReportsAsReceivedResponse(HttpContext _context)
             throws APIException, IOException {
@@ -245,7 +268,9 @@ public class DeliveryReportsController extends BaseController {
      * 3. Confirm all processed delivery reports using the confirm delivery reports endpoint
      * *Note: It is recommended to use the Webhooks feature to receive reply messages rather than
      * polling the check delivery reports endpoint.*
-     * @return    Returns the CheckDeliveryReportsResponse response from the API call 
+     *
+     * @return    Returns the CheckDeliveryReportsResponse response from the API call
+     * @throws Throwable the throwable
      */
     public CheckDeliveryReportsResponse checkDeliveryReports(
     ) throws Throwable {
@@ -323,7 +348,8 @@ public class DeliveryReportsController extends BaseController {
      * 3. Confirm all processed delivery reports using the confirm delivery reports endpoint
      * *Note: It is recommended to use the Webhooks feature to receive reply messages rather than
      * polling the check delivery reports endpoint.*
-     * @return    Returns the void response from the API call 
+     *
+     * @param callBack the call back
      */
     public void checkDeliveryReportsAsync(
                 final APICallBack<CheckDeliveryReportsResponse> callBack
@@ -363,7 +389,11 @@ public class DeliveryReportsController extends BaseController {
     }
 
     /**
-     * Builds the HttpRequest object for checkDeliveryReports
+     * Builds the HttpRequest object for checkDeliveryReports.
+     *
+     * @return the http request
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws APIException the API exception
      */
     private HttpRequest _buildCheckDeliveryReportsRequest() throws IOException, APIException {
         //the base uri for api requests
@@ -379,7 +409,6 @@ public class DeliveryReportsController extends BaseController {
         _headers.put("user-agent", BaseController.userAgent);
         _headers.put("accept", "application/json");
 
-
         //prepare and invoke the API call request to fetch the response
         HttpRequest _request = getClientInstance().get(_queryUrl, _headers, null);
 
@@ -388,12 +417,18 @@ public class DeliveryReportsController extends BaseController {
             getHttpCallBack().OnBeforeRequest(_request);
         }
 
+      //apply basic or hmac-based auth
+        AuthManager.apply(_queryBuilder.toString(), _request.getHeaders());
+        
         return _request;
     }
 
     /**
-     * Processes the response for checkDeliveryReports
-     * @return An object of type void
+     * Processes the response for checkDeliveryReports.
+     *
+     * @param _context the context
+     * @throws APIException the API exception
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     private CheckDeliveryReportsResponse _handleCheckDeliveryReportsResponse(HttpContext _context)
             throws APIException, IOException {

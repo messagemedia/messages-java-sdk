@@ -11,6 +11,7 @@ import com.messagemedia.messages.APIHelper;
 import com.messagemedia.messages.http.response.HttpResponse;
 import com.messagemedia.messages.http.response.HttpStringResponse;
 
+// TODO: Auto-generated Javadoc
 /**
  * Represents dynamic response returned by an API call.
  * 
@@ -18,22 +19,29 @@ import com.messagemedia.messages.http.response.HttpStringResponse;
  * or a more complex type using parse(). 
  */
 public class DynamicResponse {
+    
+    /** The response. */
     private HttpResponse response;
+    
+    /** The response string. */
     private String responseString;
 
     /**
-     * Instantiate class
-     * @param responseBody
+     * Instantiate class.
+     *
+     * @param responseBody the response body
      */
     public DynamicResponse(HttpResponse responseBody) {
         this.response = responseBody;
     }
     
     /**
-     * Parse response as instance of class cls
-     * @param cls
-     * @return
-     * @throws ParseException
+     * Parse response as instance of class cls.
+     *
+     * @param <T> the generic type
+     * @param cls the cls
+     * @return the t
+     * @throws ParseException the parse exception
      */
     public <T> T parse(Class<T> cls) throws ParseException {
         try {
@@ -45,8 +53,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as boolean.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public boolean parseAsBoolean() throws ParseException {
         return this.parse(Boolean.class);
@@ -54,8 +63,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as boolean.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public byte parseAsByte() throws ParseException {
         return this.parse(Byte.class);
@@ -63,8 +73,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as character.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public char parseAsCharacter() throws ParseException {
         return this.parse(Character.class);
@@ -72,8 +83,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as float.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public float parseAsFloat() throws ParseException {
         return this.parse(Float.class);
@@ -81,8 +93,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as integer.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public int parseAsInteger() throws ParseException {
         return this.parse(Integer.class);
@@ -90,8 +103,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as long.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public long parseAsLong() throws ParseException {
         return this.parse(Long.class);
@@ -99,8 +113,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as short.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public short parseAsShort() throws ParseException {
         return this.parse(Short.class);
@@ -108,8 +123,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as double.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public double parseAsDouble() throws ParseException {
         return this.parse(Double.class);
@@ -117,8 +133,9 @@ public class DynamicResponse {
     
     /**
      * Parse response as string.
+     *
      * @return Parsed value
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public String parseAsString() throws ParseException {
         try {
@@ -130,8 +147,9 @@ public class DynamicResponse {
 
     /**
      * Parse response as a map of keys and values.
+     *
      * @return Parsed map
-     * @throws ParseException
+     * @throws ParseException the parse exception
      */
     public Map<String, Object> parseAsDictionary() throws ParseException {
         try {
@@ -158,7 +176,8 @@ public class DynamicResponse {
     }
 
     /**
-     * Get response as string
+     * Get response as string.
+     *
      * @return String
      */
     private String getResponseString() {

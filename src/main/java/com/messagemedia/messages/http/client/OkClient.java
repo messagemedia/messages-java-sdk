@@ -19,18 +19,27 @@ import com.messagemedia.messages.http.response.HttpStringResponse;
 import com.messagemedia.messages.exceptions.APIException;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OkClient.
+ */
 public class OkClient implements HttpClient {
-    /**
-     * Private variables to implement singleton pattern
-     */
+    
+    /** Private variables to implement singleton pattern. */
     private static final Object synRoot = new Object();
+    
+    /** The shared instance. */
     private static HttpClient sharedInstance = null;
+    
+    /** The client. */
     private static okhttp3.OkHttpClient client = new okhttp3.OkHttpClient.Builder()
             .addInterceptor(new HttpRedirectInterceptor(true)).build();
 
+  
     /**
-     * Singleton access to the shared instance
-     * @return A shared instance of UnirestClient
+     * Gets the shared instance.
+     *
+     * @return the shared instance
      */
     public static HttpClient getSharedInstance() {
         if (sharedInstance == null) {
@@ -43,18 +52,22 @@ public class OkClient implements HttpClient {
         return sharedInstance;
     }
 
+ 
     /**
-    * Sets a timeout for HTTP requests
-    * @param   timeout    The timeout in seconds
-    */
+     * Sets the timeout.
+     *
+     * @param timeout the new timeout
+     */
     public void setTimeout(long timeout) {
         client = client.newBuilder().callTimeout(timeout, TimeUnit.MILLISECONDS).build();
     }
 
+  
     /**
-     * Execute a given HttpRequest to get string response back
-     * @param   request     The given HttpRequest to execute
-     * @param   callBack    Async callback for events
+     * Execute as string async.
+     *
+     * @param httpRequest the http request
+     * @param callBack the call back
      */
     public void executeAsStringAsync(final HttpRequest httpRequest, final APICallBack<HttpResponse> callBack) {
         okhttp3.Request okHttpRequest = convertRequest(httpRequest);
@@ -72,9 +85,10 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Execute a given HttpRequest to get binary response back
-     * @param   request     The given HttpRequest to execute
-     * @param   callBack    Async callback for events
+     * Execute a given HttpRequest to get binary response back.
+     *
+     * @param httpRequest the http request
+     * @param callBack the call back
      */
     public void executeAsBinaryAsync(final HttpRequest httpRequest, final APICallBack<HttpResponse> callBack) {
         okhttp3.Request okHttpRequest = convertRequest(httpRequest);
@@ -91,8 +105,11 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Execute a given HttpRequest to get string response back
-     * @param   request     The given HttpRequest to execute     
+     * Execute a given HttpRequest to get string response back.
+     *
+     * @param httpRequest the http request
+     * @return the http response
+     * @throws APIException the API exception
      */
     public HttpResponse executeAsString(HttpRequest httpRequest) throws APIException {
         okhttp3.Request okHttpRequest = convertRequest(httpRequest);
@@ -105,8 +122,11 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Execute a given HttpRequest to get binary response back
-     * @param   request     The given HttpRequest to execute     
+     * Execute a given HttpRequest to get binary response back.
+     *
+     * @param httpRequest the http request
+     * @return the http response
+     * @throws APIException the API exception
      */
     public HttpResponse executeAsBinary(HttpRequest httpRequest) throws APIException {
         okhttp3.Request okHttpRequest = convertRequest(httpRequest);
@@ -119,11 +139,13 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Publishes success or failure result as HttpResponse from a HttpRequest
-     * @param   okHttpResponse  The okhttp response to publish
-     * @param   httpRequest     The internal http request
-     * @param   completionBlock The success and failure code block reference to invoke the delegate
-     * @param   error           The reported errors for getting the http response
+     * Publishes success or failure result as HttpResponse from a HttpRequest.
+     *
+     * @param okHttpResponse the ok http response
+     * @param httpRequest the http request
+     * @param completionBlock the completion block
+     * @param error the error
+     * @param binaryResponse the binary response
      */
     protected static void publishResponse(okhttp3.Response okHttpResponse, HttpRequest httpRequest,
             APICallBack<HttpResponse> completionBlock, Throwable error, boolean binaryResponse) {
@@ -144,11 +166,14 @@ public class OkClient implements HttpClient {
         }
     }
 
+
     /**
-     * Converts a given OkHttp response into our internal http response model
-     * @param   response    The given OkHttp response
-     * @return              The converted http response
-     * @throws              IOException
+     * Convert response.
+     *
+     * @param response the response
+     * @param binaryResponse the binary response
+     * @return the http response
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     public static HttpResponse convertResponse(okhttp3.Response response, boolean binaryResponse) throws IOException {
         HttpResponse httpResponse = null;
@@ -181,10 +206,12 @@ public class OkClient implements HttpClient {
         return httpResponse;
     }
 
+
     /**
-     * Converts a given internal http request into an okhttp request model
-     * @param   request     The given http request in internal format
-     * @return              The converted okhttp request
+     * Convert request.
+     *
+     * @param httpRequest the http request
+     * @return the okhttp 3 . request
      */
     private okhttp3.Request convertRequest(HttpRequest httpRequest) {
         String url = httpRequest.getQueryUrl();
@@ -260,7 +287,14 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create a simple HTTP GET request with basic authentication
+     * Create a simple HTTP GET request with basic authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @param _username the username
+     * @param _password the password
+     * @return the http request
      */
     public HttpRequest get(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
@@ -268,7 +302,12 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create a simple HTTP GET request
+     * Create a simple HTTP GET request.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @return the http request
      */
     public HttpRequest get(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
@@ -276,7 +315,14 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create a simple HTTP HEAD request with basic authentication
+     * Create a simple HTTP HEAD request with basic authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @param _username the username
+     * @param _password the password
+     * @return the http request
      */
     public HttpRequest head(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
@@ -284,7 +330,12 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create a simple HTTP HEAD request
+     * Create a simple HTTP HEAD request.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @return the http request
      */
     public HttpRequest head(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
@@ -292,7 +343,12 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP POST request with parameters
+     * Create an HTTP POST request with parameters.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @return the http request
      */
     public HttpRequest post(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
@@ -300,7 +356,14 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP POST request with parameters and with basic authentication
+     * Create an HTTP POST request with parameters and with basic authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @param _username the username
+     * @param _password the password
+     * @return the http request
      */
     public HttpRequest post(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
@@ -308,14 +371,26 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP POST request with body
+     * Create an HTTP POST request with body.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _body the body
+     * @return the http body request
      */
     public HttpBodyRequest postBody(String _queryUrl, Map<String, String> _headers, String _body) {
         return new HttpBodyRequest(HttpMethod.POST, _queryUrl, _headers, _body);
     }
 
     /**
-     * Create an HTTP POST request with body and with basic authentication
+     * Create an HTTP POST request with body and with basic authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _body the body
+     * @param _username the username
+     * @param _password the password
+     * @return the http body request
      */
     public HttpBodyRequest postBody(String _queryUrl, Map<String, String> _headers, String _body, String _username,
             String _password) {
@@ -323,7 +398,12 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP PUT request with parameters
+     * Create an HTTP PUT request with parameters.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @return the http request
      */
     public HttpRequest put(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
@@ -331,7 +411,14 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP PUT request with parameters and with basic authentication
+     * Create an HTTP PUT request with parameters and with basic authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @param _username the username
+     * @param _password the password
+     * @return the http request
      */
     public HttpRequest put(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
@@ -339,14 +426,26 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP PUT request with body
+     * Create an HTTP PUT request with body.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _body the body
+     * @return the http body request
      */
     public HttpBodyRequest putBody(String _queryUrl, Map<String, String> _headers, String _body) {
         return new HttpBodyRequest(HttpMethod.PUT, _queryUrl, _headers, _body);
     }
 
     /**
-     * Create an HTTP PUT request with body and with basic authentication
+     * Create an HTTP PUT request with body and with basic authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _body the body
+     * @param _username the username
+     * @param _password the password
+     * @return the http body request
      */
     public HttpBodyRequest putBody(String _queryUrl, Map<String, String> _headers, String _body, String _username,
             String _password) {
@@ -354,7 +453,12 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP PATCH request with parameters
+     * Create an HTTP PATCH request with parameters.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @return the http request
      */
     public HttpRequest patch(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
@@ -363,7 +467,14 @@ public class OkClient implements HttpClient {
 
     /**
      * Create an HTTP PATCH request with parameters and with basic
-     * authentication
+     * authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @param _username the username
+     * @param _password the password
+     * @return the http request
      */
     public HttpRequest patch(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
@@ -371,14 +482,26 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP PATCH request with body
+     * Create an HTTP PATCH request with body.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _body the body
+     * @return the http body request
      */
     public HttpBodyRequest patchBody(String _queryUrl, Map<String, String> _headers, String _body) {
         return new HttpBodyRequest(HttpMethod.PATCH, _queryUrl, _headers, _body);
     }
 
     /**
-     * Create an HTTP PATCH request with body and with basic authentication
+     * Create an HTTP PATCH request with body and with basic authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _body the body
+     * @param _username the username
+     * @param _password the password
+     * @return the http body request
      */
     public HttpBodyRequest patchBody(String _queryUrl, Map<String, String> _headers, String _body, String _username,
             String _password) {
@@ -386,7 +509,12 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP DELETE request with parameters
+     * Create an HTTP DELETE request with parameters.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @return the http request
      */
     public HttpRequest delete(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters) {
@@ -395,7 +523,14 @@ public class OkClient implements HttpClient {
 
     /**
      * Create an HTTP DELETE request with parameters and with basic
-     * authentication
+     * authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _parameters the parameters
+     * @param _username the username
+     * @param _password the password
+     * @return the http request
      */
     public HttpRequest delete(String _queryUrl, Map<String, String> _headers,
             List<SimpleEntry<String, Object>> _parameters, String _username, String _password) {
@@ -403,14 +538,26 @@ public class OkClient implements HttpClient {
     }
 
     /**
-     * Create an HTTP DELETE request with body
+     * Create an HTTP DELETE request with body.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _body the body
+     * @return the http body request
      */
     public HttpBodyRequest deleteBody(String _queryUrl, Map<String, String> _headers, String _body) {
         return new HttpBodyRequest(HttpMethod.DELETE, _queryUrl, _headers, _body);
     }
 
     /**
-     * Create an HTTP DELETE request with body and with basic authentication
+     * Create an HTTP DELETE request with body and with basic authentication.
+     *
+     * @param _queryUrl the query url
+     * @param _headers the headers
+     * @param _body the body
+     * @param _username the username
+     * @param _password the password
+     * @return the http body request
      */
     public HttpBodyRequest deleteBody(String _queryUrl, Map<String, String> _headers, String _body, String _username,
             String _password) {

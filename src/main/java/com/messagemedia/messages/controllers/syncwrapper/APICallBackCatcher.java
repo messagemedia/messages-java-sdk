@@ -3,6 +3,7 @@ package com.messagemedia.messages.controllers.syncwrapper;
 import com.messagemedia.messages.http.client.APICallBack;
 import com.messagemedia.messages.http.client.HttpContext;
 
+// TODO: Auto-generated Javadoc
 /**
  * An APICallBack that captures the HTTP response and can be waited on
  *
@@ -15,15 +16,21 @@ import com.messagemedia.messages.http.client.HttpContext;
  */
 public class APICallBackCatcher<T> extends SynchronousBase implements APICallBack<T> {
     
+    /** The result. */
     private T result = null;
+    
+    /** The error. */
     private Throwable error = null;
+    
+    /** The success. */
     private boolean success = false;
 
     /**
      * Get the result from the API callback.
      * Blocks if API call is not complete yet.
-     * @return
-     * @throws Throwable 
+     *
+     * @return the result
+     * @throws Throwable the throwable
      */
     public T getResult() throws Throwable {
         await();
@@ -31,8 +38,9 @@ public class APICallBackCatcher<T> extends SynchronousBase implements APICallBac
     }
 
     /**
-     * Set API callback result
-     * @param response
+     * Set API callback result.
+     *
+     * @param response the new result
      */
     private void setResult(T response) {
         this.result = response;
@@ -41,8 +49,9 @@ public class APICallBackCatcher<T> extends SynchronousBase implements APICallBac
     /**
      * Get the exception object thrown by this API callback if any.
      * Blocks if API call is not complete yet.
-     * @return
-     * @throws InterruptedException 
+     *
+     * @return the error
+     * @throws InterruptedException the interrupted exception
      */
     public Throwable getError() throws InterruptedException {
         await();
@@ -51,7 +60,8 @@ public class APICallBackCatcher<T> extends SynchronousBase implements APICallBac
 
     /**
      * Set the exception object.
-     * @param error
+     *
+     * @param error the new error
      */
     private void setError(Throwable error) {
         this.error = error;
@@ -60,8 +70,9 @@ public class APICallBackCatcher<T> extends SynchronousBase implements APICallBac
     /**
      * Was the API call successful?
      * Blocks if API call is not complete yet.
-     * @return
-     * @throws InterruptedException 
+     *
+     * @return true, if is success
+     * @throws InterruptedException the interrupted exception
      */
     public boolean isSuccess() throws InterruptedException {
         await();
@@ -70,7 +81,8 @@ public class APICallBackCatcher<T> extends SynchronousBase implements APICallBac
 
     /**
      * Set the success for API call.
-     * @param success
+     *
+     * @param success the new success
      */
     private void setSuccess(boolean success) {
         this.success = success;
@@ -78,6 +90,9 @@ public class APICallBackCatcher<T> extends SynchronousBase implements APICallBac
 
     /**
      * On Success handler for APICallBack.
+     *
+     * @param context the context
+     * @param response the response
      */
     public void onSuccess(HttpContext context, T response) {
         setResult(response);
@@ -88,6 +103,9 @@ public class APICallBackCatcher<T> extends SynchronousBase implements APICallBac
 
     /**
      * OnFailure handler for APICallBack.
+     *
+     * @param responseContext the response context
+     * @param error the error
      */
     public void onFailure(HttpContext responseContext, Throwable error) {
         setResult(null);

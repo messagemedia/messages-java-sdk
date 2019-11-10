@@ -18,39 +18,38 @@ import javax.crypto.spec.SecretKeySpec;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.messagemedia.messages.exceptions.APIException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AuthManager.
+ */
 public class AuthManager {
+    
+    /** The Constant HMAC_SHA1_ALGORITHM. */
     private static final String HMAC_SHA1_ALGORITHM = "HmacSHA1";
 
+
     /**
-     * Apply authentication by adding auth headers.
-     * 
-     * @param queryUrl The url of the request (e.g.:
-     *                 https://api.messagemedia.com/v1/replies)
-     * @param headers  The headers of the request
-     * 
-     * @return HttpRequest The HttpRequest with proper validation headers
-     * 
-     * @throws JsonProcessingException In the case of malformed JSON
-     * @throws APIException            If any error was encountered while applying
-     *                                 the authentication
+     * Apply.
+     *
+     * @param queryUrl the query url
+     * @param headers the headers
+     * @throws JsonProcessingException the json processing exception
+     * @throws APIException the API exception
      */
     public static void apply(String queryUrl, Map<String, String> headers)
             throws JsonProcessingException, APIException {
         apply(queryUrl, headers, null);
     }
 
+
     /**
-     * Apply authentication by adding auth headers.
-     * 
-     * @param queryUrl The url of the request (e.g.:
-     *                 https://api.messagemedia.com/v1/replies)
-     * @param headers  The headers of the request
-     * @param body     The (optional) body of the request
-     * 
-     * @return HttpRequest The HttpRequest with proper validation headers
-     * 
-     * @throws JsonProcessingException
-     * @throws APIException
+     * Apply.
+     *
+     * @param queryUrl the query url
+     * @param headers the headers
+     * @param body the body
+     * @throws JsonProcessingException the json processing exception
+     * @throws APIException the API exception
      */
     public static void apply(String queryUrl, Map<String, String> headers, String body)
             throws JsonProcessingException, APIException {
@@ -62,8 +61,8 @@ public class AuthManager {
     }
 
     /**
-     * Build authorization header value for basic auth
-     * 
+     * Build authorization header value for basic auth.
+     *
      * @return Authorization header value for this client
      */
     private static String getBasicAuthForClient() {
@@ -71,6 +70,11 @@ public class AuthManager {
         return "Basic " + new String(Base64.getEncoder().encode(val.getBytes()));
     }
 
+    /**
+     * Gets the RFC 7231 date time.
+     *
+     * @return the RFC 7231 date time
+     */
     private static String getRFC7231DateTime() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US);
@@ -78,6 +82,14 @@ public class AuthManager {
         return dateFormat.format(calendar.getTime());
     }
 
+    /**
+     * Adds the hmac header to.
+     *
+     * @param headers the headers
+     * @param url the url
+     * @param body the body
+     * @throws APIException the API exception
+     */
     private static void addHmacHeaderTo(Map<String, String> headers, String url, String body) throws APIException {
         if (!hmacIsConfigured()) {
             return;
@@ -114,6 +126,14 @@ public class AuthManager {
         }
     }
 
+    /**
+     * Gets the md 5 hash for.
+     *
+     * @param body the body
+     * @return the md 5 hash for
+     * @throws UnsupportedEncodingException the unsupported encoding exception
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     */
     private static String getMd5HashFor(String body) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         byte[] messageBytes = body.getBytes("UTF-8");
         MessageDigest md5 = MessageDigest.getInstance("MD5");
@@ -122,6 +142,12 @@ public class AuthManager {
         return toHexString(md5Bytes);
     }
 
+    /**
+     * To hex string.
+     *
+     * @param bytes the bytes
+     * @return the string
+     */
     private static String toHexString(byte[] bytes) {
         Formatter formatter = new Formatter();
 
@@ -135,6 +161,19 @@ public class AuthManager {
         return hexString;
     }
 
+    /**
+     * Creates the hmac encoded signature from.
+     *
+     * @param dateHeader the date header
+     * @param contentSignature the content signature
+     * @param body the body
+     * @param url the url
+     * @param headers the headers
+     * @return the string
+     * @throws InvalidKeyException the invalid key exception
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     * @throws UnsupportedEncodingException the unsupported encoding exception
+     */
     private static String createHmacEncodedSignatureFrom(String dateHeader, String contentSignature, String body,
             String url, Map<String, String> headers)
             throws InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -155,6 +194,15 @@ public class AuthManager {
                 && Configuration.hmacAuthPassword != null && !Configuration.hmacAuthPassword.isEmpty();
     }
 
+    /**
+     * Gets the hmac encoding for.
+     *
+     * @param signature the signature
+     * @return the hmac encoding for
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     * @throws InvalidKeyException the invalid key exception
+     * @throws UnsupportedEncodingException the unsupported encoding exception
+     */
     private static String getHmacEncodingFor(String signature)
             throws NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException {
         Mac hasher = Mac.getInstance(HMAC_SHA1_ALGORITHM);

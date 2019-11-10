@@ -18,16 +18,20 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DateTimeHelper.
+ */
 public class DateTimeHelper {
-    /**
-     * Match the pattern for a datetime string in Rfc1123 format
-     */
+    
+    /** Match the pattern for a datetime string in Rfc1123 format. */
     private static final DateTimeFormatter RFC1123_DATE_TIME_FORMATTER = 
             DateTimeFormat.forPattern("EEE, dd MMM yyyy HH:mm:ss z")
             .withZone(DateTimeZone.forID("GMT"));
 
     /**
-     * Parse a Unix Timestamp to a DateTime object
+     * Parse a Unix Timestamp to a DateTime object.
+     *
      * @param date The Unix Timestamp
      * @return The DateTime object
      */
@@ -36,7 +40,8 @@ public class DateTimeHelper {
     }
 
     /**
-     * Parse a Unix Timestamp string to a DateTime object
+     * Parse a Unix Timestamp string to a DateTime object.
+     *
      * @param date The Unix Timestamp as a String
      * @return The parsed DateTime object
      */
@@ -45,7 +50,8 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a DateTime object to a Unix Timestamp string
+     * Convert a DateTime object to a Unix Timestamp string.
+     *
      * @param value The DateTime object to convert
      * @return The converted String
      */
@@ -54,8 +60,9 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a List of DateTime objects to Unix Timestamp strings
-     * @param value The List of DateTime objects to convert
+     * Convert a List of DateTime objects to Unix Timestamp strings.
+     *
+     * @param values the values
      * @return The list of converted Strings
      */
     public static List<String> toUnixTimestamp(List<DateTime> values) {
@@ -70,7 +77,8 @@ public class DateTimeHelper {
     }
 
     /**
-     * Parse a datetime string in Rfc1123 format to a DateTime object
+     * Parse a datetime string in Rfc1123 format to a DateTime object.
+     *
      * @param date The datetime string in Rfc1123 format
      * @return The parsed DateTime object
      */
@@ -79,7 +87,8 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a DateTime object to a Rfc1123 formatted string
+     * Convert a DateTime object to a Rfc1123 formatted string.
+     *
      * @param value The DateTime object to convert
      * @return The converted String
      */
@@ -88,8 +97,9 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a List of DateTime objects to Rfc1123 formatted strings
-     * @param value The List of DateTime objects to convert
+     * Convert a List of DateTime objects to Rfc1123 formatted strings.
+     *
+     * @param values the values
      * @return The List of converted Strings
      */
     public static List<String> toRfc1123DateTime(List<DateTime> values) {
@@ -104,7 +114,8 @@ public class DateTimeHelper {
     }
 
     /**
-     * Parse a datetime string in Rfc8601(Rfc3339) format to a DateTime object
+     * Parse a datetime string in Rfc8601(Rfc3339) format to a DateTime object.
+     *
      * @param date The datetime string in Rfc8601(Rfc3339) format
      * @return The parsed DateTime object
      */
@@ -117,7 +128,8 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a DateTime object to a Rfc8601(Rfc3339) formatted string
+     * Convert a DateTime object to a Rfc8601(Rfc3339) formatted string.
+     *
      * @param value The DateTime object to convert
      * @return The converted String
      */
@@ -126,8 +138,9 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a List of DateTime objects to Rfc8601(Rfc3339) formatted strings
-     * @param value The List of DateTime objects to convert
+     * Convert a List of DateTime objects to Rfc8601(Rfc3339) formatted strings.
+     *
+     * @param values the values
      * @return The List of converted Strings
      */
     public static List<String> toRfc8601DateTime(List<DateTime> values) {
@@ -142,7 +155,8 @@ public class DateTimeHelper {
     }
 
     /**
-     * Parse a simple date string to a LocalDate object
+     * Parse a simple date string to a LocalDate object.
+     *
      * @param date The date string
      * @return The parsed LocalDate object
      */
@@ -151,7 +165,8 @@ public class DateTimeHelper {
     }
     
     /**
-     * Convert a LocalDate object to a string
+     * Convert a LocalDate object to a string.
+     *
      * @param value The LocalDate object to convert
      * @return The converted Strings
      */
@@ -160,8 +175,9 @@ public class DateTimeHelper {
     }
 
     /**
-     * Convert a List of LocalDate objects to strings
-     * @param value The List of LocalDate objects to convert
+     * Convert a List of LocalDate objects to strings.
+     *
+     * @param values the values
      * @return The List of converted Strings
      */
     public static List<String> toSimpleDate(List<LocalDate> values) {
@@ -176,9 +192,19 @@ public class DateTimeHelper {
     }
 
     /**
-     * A class to handle deserialization of DateTime objects to Unix Timestamps
+     * A class to handle deserialization of DateTime objects to Unix Timestamps.
      */
     public static class UnixTimestampDeserializer extends JsonDeserializer<DateTime> {
+        
+        /**
+         * Deserialize.
+         *
+         * @param jp the jp
+         * @param ctxt the ctxt
+         * @return the date time
+         * @throws IOException Signals that an I/O exception has occurred.
+         * @throws JsonProcessingException the json processing exception
+         */
         @Override
         public DateTime deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             return fromUnixTimestamp(jp.getValueAsString());
@@ -186,9 +212,19 @@ public class DateTimeHelper {
     }
 
     /**
-     * A class to handle serialization of Unix Timestamps to DateTime objects
+     * A class to handle serialization of Unix Timestamps to DateTime objects.
      */
     public static class UnixTimestampSerializer extends JsonSerializer<DateTime> {
+        
+        /**
+         * Serialize.
+         *
+         * @param value the value
+         * @param jgen the jgen
+         * @param provider the provider
+         * @throws IOException Signals that an I/O exception has occurred.
+         * @throws JsonProcessingException the json processing exception
+         */
         @Override
         public void serialize(DateTime value, JsonGenerator jgen, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
@@ -197,9 +233,19 @@ public class DateTimeHelper {
     }
 
     /**
-     * A class to handle deserialization of DateTime objects to Rfc1123 format strings
+     * A class to handle deserialization of DateTime objects to Rfc1123 format strings.
      */
     public static class Rfc1123DateTimeDeserializer extends JsonDeserializer<DateTime> {
+        
+        /**
+         * Deserialize.
+         *
+         * @param jp the jp
+         * @param ctxt the ctxt
+         * @return the date time
+         * @throws IOException Signals that an I/O exception has occurred.
+         * @throws JsonProcessingException the json processing exception
+         */
         @Override
         public DateTime deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             return fromRfc1123DateTime(jp.getValueAsString());
@@ -207,9 +253,19 @@ public class DateTimeHelper {
     }
 
     /**
-     * A class to handle serialization of Rfc1123 format strings to DateTime objects 
+     * A class to handle serialization of Rfc1123 format strings to DateTime objects.
      */
     public static class Rfc1123DateTimeSerializer extends JsonSerializer<DateTime> {
+        
+        /**
+         * Serialize.
+         *
+         * @param value the value
+         * @param jgen the jgen
+         * @param provider the provider
+         * @throws IOException Signals that an I/O exception has occurred.
+         * @throws JsonProcessingException the json processing exception
+         */
         @Override
         public void serialize(DateTime value, JsonGenerator jgen, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
@@ -218,9 +274,19 @@ public class DateTimeHelper {
     }
 
     /**
-     * A class to handle deserialization of DateTime objects to Rfc8601(Rfc3339) format strings
+     * A class to handle deserialization of DateTime objects to Rfc8601(Rfc3339) format strings.
      */
     public static class Rfc8601DateTimeDeserializer extends JsonDeserializer<DateTime> {
+        
+        /**
+         * Deserialize.
+         *
+         * @param jp the jp
+         * @param ctxt the ctxt
+         * @return the date time
+         * @throws IOException Signals that an I/O exception has occurred.
+         * @throws JsonProcessingException the json processing exception
+         */
         @Override
         public DateTime deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             return fromRfc8601DateTime(jp.getValueAsString());
@@ -228,9 +294,19 @@ public class DateTimeHelper {
     }
 
     /**
-     * A class to handle serialization of Rfc8601(Rfc3339) format strings to DateTime objects 
+     * A class to handle serialization of Rfc8601(Rfc3339) format strings to DateTime objects.
      */
     public static class Rfc8601DateTimeSerializer extends JsonSerializer<DateTime> {
+        
+        /**
+         * Serialize.
+         *
+         * @param value the value
+         * @param jgen the jgen
+         * @param provider the provider
+         * @throws IOException Signals that an I/O exception has occurred.
+         * @throws JsonProcessingException the json processing exception
+         */
         @Override
         public void serialize(DateTime value, JsonGenerator jgen, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
@@ -239,9 +315,19 @@ public class DateTimeHelper {
     }
     
     /**
-     * A class to handle deserialization of date strings to LocalDate objects 
+     * A class to handle deserialization of date strings to LocalDate objects.
      */
     public static class SimpleDateDeserializer extends JsonDeserializer<LocalDate> {
+        
+        /**
+         * Deserialize.
+         *
+         * @param jp the jp
+         * @param ctxt the ctxt
+         * @return the local date
+         * @throws IOException Signals that an I/O exception has occurred.
+         * @throws JsonProcessingException the json processing exception
+         */
         @Override
         public LocalDate deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             return fromSimpleDate(jp.getValueAsString());
@@ -249,9 +335,19 @@ public class DateTimeHelper {
     }
     
     /**
-     * A class to handle serialization of LocalDate objects to date strings  
+     * A class to handle serialization of LocalDate objects to date strings.
      */
     public static class SimpleDateSerializer extends JsonSerializer<LocalDate> {
+        
+        /**
+         * Serialize.
+         *
+         * @param value the value
+         * @param jgen the jgen
+         * @param provider the provider
+         * @throws IOException Signals that an I/O exception has occurred.
+         * @throws JsonProcessingException the json processing exception
+         */
         @Override
         public void serialize(LocalDate value, JsonGenerator jgen, SerializerProvider provider)
                 throws IOException, JsonProcessingException {
