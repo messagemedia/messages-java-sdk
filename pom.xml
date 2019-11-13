@@ -119,7 +119,7 @@
   </build>
 
     <properties>
-    <jackson.version>2.9.8</jackson.version>
+    <jackson.version>2.10.1</jackson.version>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
