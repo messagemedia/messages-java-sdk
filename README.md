@@ -1,385 +1,139 @@
-# MessageMedia Messages Java SDK
-[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
-[![maven](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/com/messagemedia/sdk/messages/maven-metadata.xml.svg)](https://mvnrepository.com/artifact/com.messagemedia.sdk/messages)
 
-The MessageMedia Messages API provides a number of endpoints for building powerful two-way messaging applications.
+# Getting Started with Messages
 
-![Isometric](https://i.imgur.com/jJeHwf5.png)
+## Introduction
 
-## Table of Contents
-* [Authentication](#closed_lock_with_key-authentication)
-* [Errors](#interrobang-errors)
-* [Information](#newspaper-information)
-  * [Slack and Mailing List](#slack-and-mailing-list)
-  * [Bug Reports](#bug-reports)
-  * [Contributing](#contributing)
-* [Installation](#star-installation)
-* [Get Started](#clapper-get-started)
-* [API Documentation](#closed_book-api-documentation)
-* [Need help?](#confused-need-help)
-* [License](#page_with_curl-license)
+TODO: Add a description
 
-## :closed_lock_with_key: Authentication
+## Building
 
-Authentication is done via API keys. Sign up at https://developers.messagemedia.com/register/ to get your API keys.
+The generated code uses a few Maven dependencies e.g., Jackson, OkHttp,
+and Apache HttpClient. The reference to these dependencies is already
+added in the pom.xml file will be installed automatically. Therefore,
+you will need internet access for a successful build.
 
-Requests are authenticated using HTTP Basic Auth or HMAC. Provide your API key as the auth_user_name and API secret as the auth_password.
+* In order to open the client library in Eclipse click on `File -> Import`.
 
-## :interrobang: Errors
+![Importing SDK into Eclipse - Step 1](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=import0)
 
-Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The most common status codes are listed below.
+* In the import dialog, select `Existing Java Project` and click `Next`.
 
-#### HTTP Status Codes
+![Importing SDK into Eclipse - Step 2](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=import1)
 
-| Code      | Title       | Description |
-|-----------|-------------|-------------|
-| 400 | Invalid Request | The request was invalid |
-| 401 | Unauthorized | Your API credentials are invalid |
-| 403 | Disabled feature | Feature not enabled |
-| 404 | Not Found |	The resource does not exist |
-| 50X | Internal Server Error | An error occurred with our API |
+* Browse to locate the folder containing the source code. Select the detected location of the project and click `Finish`.
 
-## :newspaper: Information
+![Importing SDK into Eclipse - Step 3](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=import2)
 
-#### Slack and Mailing List
+* Upon successful import, the project will be automatically built by Eclipse after automatically resolving the dependencies.
 
-If you have any questions, comments, or concerns, please join our Slack channel:
-https://developers.messagemedia.com/collaborate/slack/
+![Importing SDK into Eclipse - Step 4](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=import3)
 
-Alternatively you can email us at:
-developers@messagemedia.com
+## Installation
 
-#### Bug reports
+The following section explains how to use the MessagesLib library in a new project.
 
-If you discover a problem with the SDK, we would like to know about it. You can raise an [issue](https://github.com/messagemedia/signingkeys-nodejs-sdk/issues) or send an email to: developers@messagemedia.com
+### 1. Starting a new project
 
-#### Contributing
+For starting a new project, click the menu command `File > New > Project`.
 
-We welcome your thoughts on how we could best provide you with SDKs that would simplify how you consume our services in your application. You can fork and create pull requests for any features you would like to see or raise an [issue](https://github.com/messagemedia/signingkeys-nodejs-sdk/issues)
+![Add a new project in Eclipse](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=createNewProject0)
 
-## :star: Installation
-At present the jars are available from a public maven repository.
+Next, choose `Maven > Maven Project` and click `Next`.
 
-Use the following dependency in your project to grab via Maven:
-```
-<dependency>
-  <groupId>com.messagemedia.sdk</groupId>
-  <artifactId>messages</artifactId>
-  <version>2.0.0</version>
-</dependency>
+![Create a new Maven Project - Step 1](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=createNewProject1)
 
-```
+Here, make sure to use the current workspace by choosing `Use default Workspace location`, as shown in the picture below and click `Next`.
 
-## :clapper: Get Started
-It's easy to get started. Simply enter the API Key and secret you obtained from the [MessageMedia Developers Portal](https://developers.messagemedia.com) into the code snippet below and a mobile number you wish to send to.
+![Create a new Maven Project - Step 2](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=createNewProject2)
 
-### Send an SMS
-Destination numbers (`destination_number`) should be in the [E.164](http://en.wikipedia.org/wiki/E.164) format. For example, `+61491570156`.
+Following this, select the *quick start* project type to create a simple project with an existing class and a `main` method. To do this, choose `maven-archetype-quickstart` item from the list and click `Next`.
+
+![Create a new Maven Project - Step 3](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=createNewProject3)
+
+In the last step, provide a `Group Id` and `Artifact Id` as shown in the picture below and click `Finish`.
+
+![Create a new Maven Project - Step 4](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=createNewProject4)
+
+### 2. Add reference of the library project
+
+The created Maven project manages its dependencies using its `pom.xml` file. In order to add a dependency on the *MessagesLib* client library, double click on the `pom.xml` file in the `Package Explorer`. Opening the `pom.xml` file will render a graphical view on the canvas. Here, switch to the `Dependencies` tab and click the `Add` button as shown in the picture below.
+
+![Adding dependency to the client library - Step 1](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=testProject0)
+
+Clicking the `Add` button will open a dialog where you need to specify MessagesLib in `Group Id`, messages-lib in `Artifact Id` and 1.1.0 in the `Version` fields. Once added click `OK`. Save the `pom.xml` file.
+
+![Adding dependency to the client library - Step 2](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=testProject1)
+
+![Adding sample code](https://apidocs.io/illustration/java?workspaceFolder=Messages-Java&workspaceName=Messages&projectName=MessagesLib&rootNamespace=com.messagemedia.api&groupId=MessagesLib&artifactId=messages-lib&version=1.1.0&step=testProject2)
+
+### 3. Write sample code
+
+Once the `SimpleConsoleApp` is created, a file named `App.java` will be visible in the *Package Explorer* with a `main` method. This is the entry point for the execution of the created project.
+Here, you can add code to initialize the client library and instantiate a *Controller* class. Sample code to initialize the client library and using controller methods is given in the subsequent sections.
+
+## Test the SDK
+
+The generated code and the server can be tested using automatically generated test cases.
+JUnit is used as the testing framework and test runner.
+
+In Eclipse, for running the tests do the following:
+
+1. Select the project MessagesLib from the package explorer.
+2. Select `Run -> Run as -> JUnit Test` or use `Alt + Shift + X` followed by `T` to run the Tests.
+
+## Initialize the API Client
+
+**_Note:_** Documentation for the client can be found [here.](doc/client.md)
+
+The following parameters are configurable for the API Client:
+
+| Parameter | Type | Description |
+|  --- | --- | --- |
+| `httpClientConfig` | `ReadonlyHttpClientConfiguration` | Http Client Configuration instance. |
+| `basicAuthUserName` | `String` | The username to use with basic authentication |
+| `basicAuthPassword` | `String` | The password to use with basic authentication |
+
+The API client can be initialized as follows:
+
 ```java
-import java.util.ArrayList;
-import java.util.List;
-
-import com.messagemedia.messages.MessageMediaMessagesClient;
-import com.messagemedia.messages.controllers.MessagesController;
-import com.messagemedia.messages.http.client.APICallBack;
-import com.messagemedia.messages.http.client.HttpContext;
-import com.messagemedia.messages.models.Message;
-import com.messagemedia.messages.models.SendMessagesRequest;
-import com.messagemedia.messages.models.SendMessagesResponse;
-
-public class App
-{
-    public static void main( String[] args )
-    {
-
-     // Configuration parameters and credentials
-        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
-        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
-        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
-
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        MessagesController messages = client.getMessages();
-
-        Message message = new Message();
-        message.setContent("My message");
-        message.setDestinationNumber("+61466412529");
-
-        List<Message> messagesList = new ArrayList<Message>();
-        messagesList.add(message);
-
-        SendMessagesRequest body = new SendMessagesRequest();
-        body.setMessages(messagesList);
-
-        messages.sendMessagesAsync(body, new APICallBack<SendMessagesResponse>() {
-		        public void onSuccess(HttpContext context, SendMessagesResponse response) {
-		            // TODO success callback handler
-		        	System.out.println("success");
-		        }
-		        public void onFailure(HttpContext context, Throwable error) {
-		            // TODO failure callback handler
-		        	System.out.println("failure");
-		        }
-			});
-    }
-}
+MessagesClient client = new MessagesClient.Builder()
+    .httpClientConfig(configBuilder -> configBuilder
+            .timeout(0))
+    .basicAuthCredentials("BasicAuthUserName", "BasicAuthPassword")
+    .build();
 ```
 
-### Send an MMS
-* Destination numbers (`destination_number`) should be in the [E.164](http://en.wikipedia.org/wiki/E.164) format. For example, `+61491570156`.
-```java
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+## Authorization
 
-import com.messagemedia.messages.MessageMediaMessagesClient;
-import com.messagemedia.messages.controllers.MessagesController;
-import com.messagemedia.messages.http.client.APICallBack;
-import com.messagemedia.messages.http.client.HttpContext;
-import com.messagemedia.messages.models.FormatEnum;
-import com.messagemedia.messages.models.Message;
-import com.messagemedia.messages.models.SendMessagesRequest;
-import com.messagemedia.messages.models.SendMessagesResponse;
+This API uses `Basic Authentication`.
 
-public class App
-{
-    public static void main( String[] args )
-    {
+## API Errors
 
-     // Configuration parameters and credentials
-        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
-        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
-        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
+Here is the list of errors that the API might throw.
 
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        MessagesController messages = client.getMessages();
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 402 | The feature that you are trying to use is disabled by default. Please contact tech support at support@messagemedia.com.au | `ApiException` |
+| 404 | The specified resource does not exist. | `ApiException` |
 
-        Message message = new Message();
-        message.setContent("My message");
-        message.setDestinationNumber("+61466412529");
-        message.setFormat(FormatEnum.MMS);
-        message.setSubject("This is an MMS");
-        message.setMedia(new ArrayList<String>(Arrays.asList("https://upload.wikimedia.org/wikipedia/commons/6/6a/L80385-flash-superhero-logo-1544.png")));
+## List of APIs
 
+* [Delivery Reports](doc/controllers/delivery-reports.md)
+* [Messages](doc/controllers/messages.md)
+* [Replies](doc/controllers/replies.md)
 
-        List<Message> messagesList = new ArrayList<Message>();
-        messagesList.add(message);
+## Classes Documentation
 
-        SendMessagesRequest body = new SendMessagesRequest();
-        body.setMessages(messagesList);
+* [Utility Classes](doc/utility-classes.md)
+* [HttpRequest](doc/http-request.md)
+* [HttpResponse](doc/http-response.md)
+* [HttpStringResponse](doc/http-string-response.md)
+* [HttpContext](doc/http-context.md)
+* [HttpBodyRequest](doc/http-body-request.md)
+* [HttpCallback Interface](doc/http-callback-interface.md)
+* [Headers](doc/headers.md)
+* [ApiException](doc/api-exception.md)
+* [Configuration Interface](doc/configuration-interface.md)
+* [HttpClientConfiguration](doc/http-client-configuration.md)
+* [HttpClientConfiguration.Builder](doc/http-client-configuration-builder.md)
 
-        messages.sendMessagesAsync(body, new APICallBack<SendMessagesResponse>() {
-		        public void onSuccess(HttpContext context, SendMessagesResponse response) {
-		            // TODO success callback handler
-		        	System.out.println("success");
-		        }
-		        public void onFailure(HttpContext context, Throwable error) {
-		            // TODO failure callback handler
-		        	System.out.println("failure");
-		        }
-			});
-    }
-}
-```
-
-### Get Status of a Message
-You can get a messsage ID from a sent message by looking at the `message_id` from the response of the above example.
-```java
-import com.messagemedia.messages.MessageMediaMessagesClient;
-import com.messagemedia.messages.controllers.MessagesController;
-import com.messagemedia.messages.http.client.APICallBack;
-import com.messagemedia.messages.http.client.HttpContext;
-import com.messagemedia.messages.models.GetMessageStatusResponse;
-
-public class App {
-
-    public static void main(String[] args) throws Throwable {
-        // Configuration parameters and credentials
-        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
-        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
-        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
-
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        MessagesController messages = client.getMessages();
-
-        String messageId = "YOUR_MESSAGE_ID";
-        messages.getMessageStatusAsync(messageId, new APICallBack<GetMessageStatusResponse>() {
-	        public void onSuccess(HttpContext context, GetMessageStatusResponse response) {
-	            // TODO success callback handler
-	        	System.out.println("success");
-	        }
-	        public void onFailure(HttpContext context, Throwable error) {
-	            // TODO failure callback handler
-	        	System.out.println("failure");
-	        }
-		});
-    }
-
-}
-```
-
-### Get replies to a message
-You can check for replies that are sent to your messages
-```java
-import com.messagemedia.messages.MessageMediaMessagesClient;
-import com.messagemedia.messages.controllers.MessagesController;
-import com.messagemedia.messages.controllers.RepliesController;
-import com.messagemedia.messages.http.client.APICallBack;
-import com.messagemedia.messages.http.client.HttpContext;
-import com.messagemedia.messages.models.CheckRepliesResponse;
-import com.messagemedia.messages.models.GetMessageStatusResponse;
-
-public class App {
-
-    public static void main(String[] args) throws Throwable {
-        // Configuration parameters and credentials
-        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
-        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
-        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
-
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        RepliesController replies = client.getReplies();
-
-        replies.checkRepliesAsync(new APICallBack<CheckRepliesResponse>() {
-	        public void onSuccess(HttpContext context, CheckRepliesResponse response) {
-	            // TODO success callback handler
-	        	System.out.println("success");
-	        }
-	        public void onFailure(HttpContext context, Throwable error) {
-	            // TODO failure callback handler
-	        	System.out.println("failure");
-	        }
-		});  
-
-    }
-
-}
-```
-
-### Check Delivery Reports
-This endpoint allows you to check for delivery reports to inbound and outbound messages.
-```java
-import com.messagemedia.messages.MessageMediaMessagesClient;
-import com.messagemedia.messages.controllers.DeliveryReportsController;
-import com.messagemedia.messages.http.client.APICallBack;
-import com.messagemedia.messages.http.client.HttpContext;
-import com.messagemedia.messages.models.CheckDeliveryReportsResponse;
-
-
-public class App
-{
-    public static void main( String[] args )
-    {
-
-     // Configuration parameters and credentials
-        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
-        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
-        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
-
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        DeliveryReportsController deliveryReports = client.getDeliveryReports();
-
-        deliveryReports.checkDeliveryReportsAsync(new APICallBack<CheckDeliveryReportsResponse>() {
-		        public void onSuccess(HttpContext context, CheckDeliveryReportsResponse response) {
-		            // TODO success callback handler
-		        	System.out.println("success");
-		        }
-		        public void onFailure(HttpContext context, Throwable error) {
-		            // TODO failure callback handler
-		        	System.out.println("failure");
-		        }
-			});
-    }
-}
-```
-
-### Confirm Delivery Reports
-This endpoint allows you to mark delivery reports as confirmed so they're no longer returned by the Check Delivery Reports function.
-```java
-import java.util.ArrayList;
-import java.util.List;
-
-import com.messagemedia.messages.MessageMediaMessagesClient;
-import com.messagemedia.messages.controllers.DeliveryReportsController;
-import com.messagemedia.messages.http.client.APICallBack;
-import com.messagemedia.messages.http.client.HttpContext;
-import com.messagemedia.messages.models.CheckDeliveryReportsResponse;
-import com.messagemedia.messages.models.ConfirmDeliveryReportsAsReceivedRequest;
-import com.messagemedia.messages.models.DynamicResponse;
-
-
-public class App
-{
-    public static void main( String[] args )
-    {
-
-     // Configuration parameters and credentials
-        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
-        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
-        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
-
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        DeliveryReportsController deliveryReports = client.getDeliveryReports();
-
-        ConfirmDeliveryReportsAsReceivedRequest body = new ConfirmDeliveryReportsAsReceivedRequest();
-        List<String> reportIds = new ArrayList<String>();
-        reportIds.add("delivery-report-id");
-
-        deliveryReports.confirmDeliveryReportsAsReceivedAsync(body, new APICallBack<DynamicResponse>() {
-		        public void onSuccess(HttpContext context, DynamicResponse response) {
-		            // TODO success callback handler
-		        	System.out.println("success");
-		        }
-		        public void onFailure(HttpContext context, Throwable error) {
-		            // TODO failure callback handler
-		        	System.out.println("failure");
-		        }
-			});
-    }
-}
-```
-
-### Check credits remaining (Prepaid accounts only)
-This endpoint allows you to check for credits remaining on your prepaid account.
-```java
-import com.messagemedia.messages.MessageMediaMessagesClient;
-import com.messagemedia.messages.controllers.MessagesController;
-import com.messagemedia.messages.http.client.APICallBack;
-import com.messagemedia.messages.http.client.HttpContext;
-import com.messagemedia.messages.models.DynamicResponse;
-
-
-public class App
-{
-    public static void main( String[] args )
-    {
-
-     // Configuration parameters and credentials
-        String authUserName = "API_KEY"; // The username to use with basic/HMAC authentication
-        String authPassword = "API_SECRET"; // The password to use with basic/HMAC authentication
-        boolean useHmacAuth = false; // Change to true if you are using HMAC keys
-
-        MessageMediaMessagesClient client = new MessageMediaMessagesClient(authUserName, authPassword, useHmacAuth);
-        MessagesController messages = client.getMessages();
-        
-        messages.checkCreditsRemainingAsync(new APICallBack<DynamicResponse>() {
-		        public void onSuccess(HttpContext context, DynamicResponse response) {
-		            // TODO success callback handler
-		        	System.out.println(response.toString());
-		        }
-		        public void onFailure(HttpContext context, Throwable error) {
-		            // TODO failure callback handler
-		        	System.out.println("failure");
-		        }
-			});
-    }
-}
-```
-
-## :closed_book: API Reference Documentation
-Check out the [full API documentation](https://developers.messagemedia.com/code/messages-api-documentation/) for more detailed information.
-
-## :confused: Need help?
-Please contact developer support at developers@messagemedia.com or check out the developer portal at [developers.messagemedia.com](https://developers.messagemedia.com/)
-
-## :page_with_curl: License
-Apache License. See the [LICENSE](LICENSE) file.
